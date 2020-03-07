@@ -4,18 +4,19 @@ import axios from 'axios';
 
 export default {
   service: axios.create({
-    baseURL: `${process.env.REACT_APP_APIURL || ""}/auth`,
+    baseURL: `${process.env.REACT_APP_APIURL || "http://localhost:5000"}/auth`,
     withCredentials: true
   }),
 
-  login(username, password) {
-    return this.service.post('/login', {username, password})
+  login(mail, password) {
+    return this.service.post('/login', {mail, password})
       .then(response => response.data)
   },
 
-  signup(username, password) {
+  signup(username, mail, password) {
     return this.service.post('/signup', {
       username,
+      mail,
       password
     })
       .then(response => response.data)
@@ -31,11 +32,11 @@ export default {
       .then(response => response.data)
   },
 
-  edit(username, campus, course) {
+  edit({ clientType, username, mail }) {
     return this.service.post('/edit', {
+      clientType,
       username,
-      campus,
-      course
+      mail
     })
       .then(response => response.data)
   },

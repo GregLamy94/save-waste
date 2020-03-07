@@ -12,9 +12,9 @@ export default (props) => {
       ) : (
         <Popin one={(
           <>
-            <h1>IronProfile</h1>
-            <p>Today we will create an app with authorization, adding some cool styles !
-              zzzzzz
+            <h1>Save Waste</h1>
+            <p>
+            Faites de vos surplus des dons et économisez de l’argent avec SaveWaste
             </p>
 
             <div className="cta">

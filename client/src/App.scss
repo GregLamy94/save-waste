@@ -1,4 +1,4 @@
-body {background-color:#d3e7d3;}
+body {background-color: white;}
 
 .App {
   min-height:100vh;
@@ -32,20 +32,16 @@ h1 {color:#648166;}
 
 .popin {
   background:white; box-shadow:0 0 .5em rgba(0,0,0,.125);
-  display:flex; width:45em; min-height:30em;
+  display:block; width:45em; min-height:40em;
 
   border-radius:0.25em;overflow:hidden;
 
-  &__one,
-  &__two {width:50%;}
-
-  &__two {
-    background:#c0e3be url("/arc.svg") left center /5% 110% no-repeat;
+  &__one {
+  display:block; 
   }
 
   // padding
-  &__one,
-  &__two {padding:3em;}
+  &__one {padding:5em;}
 }
 
 /*
@@ -86,14 +82,14 @@ a.btn {text-decoration:none; color:inherit;}
 [data-route="/"],
 [data-route="/profile"] {
   .popin__one {
-    display:flex; flex-direction:column;
+    display:block; 
     .cta {margin-top:auto; margin-bottom:0;}
   }
 
   p em {font-style:normal; color:gray;}
-  p em +span {display:block; font-size:150%;}
+  p em +span {display:flex; font-size:150%;}
 
-  .btn.logout {background-color:transparent;color:red;}
+  //.btn.logout {background-color:transparent;color:red;}
 
   .btn +.btn {margin-top:1em;}
 
@@ -102,14 +98,6 @@ a.btn {text-decoration:none; color:inherit;}
     background:#e1e1e1;
     margin-bottom:1em;
     object-fit: cover;
-  }
-
-  .popin__two {
-    display:flex; flex-direction:column;
-    p:last-child {
-      margin-top:auto; margin-bottom:0;
-      color:gray;
-    }
   }
 }
 
@@ -129,15 +117,6 @@ a.btn {text-decoration:none; color:inherit;}
   .btn {background-color:#ffffff;}
 
   .popin__one h1 {margin-top:0;}
-
-  .popin__two {
-    display:flex; flex-direction:column;
-    p:last-child {margin-top:auto; margin-bottom:0;}
-
-    p:first-child {margin-top:0;}
-  }
-
-  .popin__two strong {display:block; font-size:150%;}
 
   p small {color:gray;}
   p small +.btn {margin-top:1em;}
