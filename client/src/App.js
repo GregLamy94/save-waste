@@ -9,7 +9,7 @@ import Login from "./components/auth/Login.js";
 import Profile from "./components/auth/Profile.js";
 
 import Navbar from "./components/navigation/Navbar";
-import Menu from "./components/navigation/Menu";
+import MenuBar from "./components/navigation/MenuBar";
 
 import authService from "./components/auth/auth-service.js";
 
@@ -94,7 +94,7 @@ class App extends Component {
             </div>
           )}
         />
-        {this.state.user._id ? <Menu user={this.state.user} /> : ""}
+        {this.state.user._id ? <MenuBar user={this.state.user} /> : ""}
       </div>
     );
   }

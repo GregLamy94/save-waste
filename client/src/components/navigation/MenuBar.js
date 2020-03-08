@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-class Menu extends React.Component {
+class MenuBar extends React.Component {
   render() {
     return (
       <nav className="menu">
@@ -17,4 +17,4 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+export default MenuBar;
