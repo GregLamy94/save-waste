@@ -27,6 +27,7 @@ cd client
 npm install
 npm start
 ```
+
 new
 
 Go to: http://localhost:3000
@@ -52,3 +53,5 @@ NB: Heroku will detect a Node.js app and will execute the `build` script from `p
 
 - Fork this repo
 - Clone this repo
+
+new
