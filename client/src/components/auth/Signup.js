@@ -9,7 +9,7 @@ export default class extends React.Component {
   state = {
     clientType: "",
     companyName: "",
-    username: "",
+    email: "",
     password: "",
     error: ""
   };
@@ -19,7 +19,12 @@ export default class extends React.Component {
 
     // 1. Signup
     authService
-      .signup(this.state.companyName, this.state.username, this.state.password)
+      .signup(
+        this.state.email,
+        this.state.password,
+        this.state.companyName,
+        this.state.clientType
+      )
       .then(response => {
         this.setState({ error: "" });
         this.props.updateUser(response);
@@ -71,9 +76,9 @@ export default class extends React.Component {
                 <label>
                   <em>Mail</em>
                   <input
-                    type="text"
-                    name="username"
-                    value={this.state.username}
+                    type="email"
+                    name="email"
+                    value={this.state.email}
                     onChange={this.handleChange}
                   />
                 </label>

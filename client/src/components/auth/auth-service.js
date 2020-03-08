@@ -1,6 +1,6 @@
 // components/auth/auth-service.js
 
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   service: axios.create({
@@ -9,40 +9,43 @@ export default {
   }),
 
   login(mail, password) {
-    return this.service.post('/login', {mail, password})
-      .then(response => response.data)
+    return this.service
+      .post("/login", { mail, password })
+      .then(response => response.data);
   },
 
-  signup(username, mail, password) {
-    return this.service.post('/signup', {
-      username,
-      mail,
-      password
-    })
-      .then(response => response.data)
+  signup(email, password, companyName, clientType) {
+    return this.service
+      .post("/signup", {
+        email,
+        password,
+        companyName,
+        clientType
+      })
+      .then(response => response.data);
   },
 
   loggedin() {
-    return this.service.get('/loggedin')
-      .then(response => response.data)
+    return this.service.get("/loggedin").then(response => response.data);
   },
 
   logout() {
-    return this.service.get('/logout', {})
-      .then(response => response.data)
+    return this.service.get("/logout", {}).then(response => response.data);
   },
 
   edit({ clientType, username, mail }) {
-    return this.service.post('/edit', {
-      clientType,
-      username,
-      mail
-    })
-      .then(response => response.data)
+    return this.service
+      .post("/edit", {
+        clientType,
+        username,
+        mail
+      })
+      .then(response => response.data);
   },
 
   upload(formdata) {
-    return this.service.post('/upload', formdata)
-      .then(response => response.data)
+    return this.service
+      .post("/upload", formdata)
+      .then(response => response.data);
   }
 };
