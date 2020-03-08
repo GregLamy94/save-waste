@@ -27,6 +27,7 @@ cd client
 npm install
 npm start
 ```
+new
 
 Go to: http://localhost:3000
 

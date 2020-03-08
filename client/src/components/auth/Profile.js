@@ -33,38 +33,21 @@ export default class extends React.Component {
         ) : (
           <Popin one={(
             <>
-              <h1>Profile</h1>
               
-              <p>
-                <em>Username</em>
-                <span>{this.props.user.username}</span>
-              </p>
-              <p>
-                <em>Campus</em>
-                <span>{this.props.user.campus}</span>
-              </p>
-              <p>
-                <em>Course</em>
-                <span>{this.props.user.course}</span>
-              </p>
-    
-              <div className="cta">
-                <button className="btn logout" onClick={this.logout}>Logout</button>
-              </div>
-            </>
-          )} two={(
-            <>
               <form>
                 <label>
                   <img className="avatar" src={this.props.user.image || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
                   <input type="file" name="image" onChange={this.handleUpload} />
                 </label>
-                
               </form>
-    
-              <p>
-                <small>The user is able to upload a new profile photo, using NodeJS and Multer uploader.</small>
-              </p>
+              <h1>Bonjour</h1>
+              <h2>
+              <span>{this.props.user.clientType}</span>
+              <span>{this.props.user.username}</span>
+              </h2>
+              <div className="cta">
+                <button className="btn logout" onClick={this.logout}>Logout</button>
+              </div>
             </>
           )} />
         )}

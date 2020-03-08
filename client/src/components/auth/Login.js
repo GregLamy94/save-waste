@@ -46,34 +46,24 @@ export default class extends React.Component {
 
             <p>
               <label>
-                <em>Username</em>
+                <em>Mail</em>
                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
               </label>
             </p>
 
             <p>
               <label>
-                <em>Password</em>
+                <em>Mot de passe</em>
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
               </label>
             </p>
 
+            <div className="cta">
+                <button className="btn" type="submit">Log in</button>
+            </div>
           </form>
-
           <p>
-            <small>If you don't have an account yet, you can create your account <Link to="/signup">here</Link></small>
-          </p>
-        </>
-      )} two={(
-        <>
-          <p>
-            <strong>Hello!!</strong>
-            Awesome to have at IronProfile again!
-          </p>
-          
-          <p>
-            <small>If you login, you agree with all our terms and conditions where we can do whatever we want with the data!</small>
-            <button className="btn" onClick={this.handleSubmit}>Log in</button>
+            <small>Vous n'avez pas un compte?  <Link to="/signup">S'inscrire</Link></small>
           </p>
         </>
       )} />

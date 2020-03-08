@@ -35,7 +35,10 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.user)
     return (
+      <div>
+      <header>Logo-home</header>
       <Route render={props => (
         <div className="App" data-route={props.location.pathname}> {/* data-route="/" allow us to style pages */}
 
@@ -58,9 +61,12 @@ class App extends Component {
 
             {/* last route, ie: 404 */}
             <Route render={() => (<h1>Not Found</h1>)} />
+
           </Switch>
         </div>
       )} />
+      <header>Logo-home</header>
+      </div>
     );
   }
 }

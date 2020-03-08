@@ -34,16 +34,17 @@ router.post("/login", (req, res, next) => {
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
+  const mail = req.body.mail;
   const password = req.body.password;
 
-  if (!username || !password) {
-    res.status(400).json({message: "Indicate username and password"});
+  if (!mail || !password || !username) {
+    res.status(400).json({message: "Indicate username, mail and password"});
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ mail: mail }, (err, user) => {
     if (user !== null) {
-      res.status(400).json({ message: "The username already exists" });
+      res.status(400).json({ message: "L'utilisateur existe déjà" });
       return;
     }
 
@@ -52,18 +53,19 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
+      mail,
       password: hashPass
     });
 
     newUser.save()
-    .then(() => {
-      req.login(newUser, (err) => {
+    .then(user => {
+      req.login(user, (err) => {
         if (err) {
           res.status(500).json({message: 'Login after signup went bad.'});
           return;
         }
     
-        res.status(201).json(newUser);
+        res.status(201).json(user);
       });
     })
     .catch(err => {
@@ -89,7 +91,7 @@ router.get("/loggedin", (req, res, next) => {
 router.post("/edit", (req, res, next) => {
   // Check user is logged in
   if (!req.user) {
-    res.status(401).json({message: "You need to be logged in to edit your profile"});
+    res.status(401).json({message: "Connectez-vous pour éditer votre profil"});
     return;
   }
 
