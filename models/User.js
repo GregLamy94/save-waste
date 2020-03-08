@@ -1,27 +1,33 @@
-const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  mail: String,
-  username: String,
-  password: String,
-  // 👇
-  campus: {
-    type: String,
-    enum: ['Madrid', 'Barcelona', 'Miami', 'Paris', 'Berlin', 'Amsterdam', 'México', 'Sao', 'Paulo']
+const userSchema = new Schema(
+  {
+    companyName: String,
+    clientType: { type: String, enum: ["association", "restaurant"] },
+    contactName: String,
+    email: String, //email
+    password: String,
+    phone: Number,
+    siret: Number, //uniquement sociétés
+    address: {
+      street: String,
+      zipCode: Number,
+      city: String,
+      geo: {
+        lat: Number,
+        long: Number
+      }
+    },
+    imageUrl: String
   },
-  course: {
-    type: String,
-    enum: ['WebDev', 'UX/UI', 'Data Analytics']
-  },
-  image: String
-  // 👆
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }
   }
-});
+);
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;

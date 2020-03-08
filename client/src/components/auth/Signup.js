@@ -1,91 +1,110 @@
-import React from 'react';
+import React from "react";
 
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import Popin from '../Popin.js';
-import authService from './auth-service.js';
+import Popin from "../Popin.js";
+import authService from "./auth-service.js";
 
 export default class extends React.Component {
   state = {
     clientType: "",
-    username:"",
-    mail: "",
+    companyName: "",
+    username: "",
     password: "",
     error: ""
-  }
+  };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
 
     // 1. Signup
-    authService.signup(this.state.username, this.state.mail, this.state.password)
+    authService
+      .signup(this.state.companyName, this.state.username, this.state.password)
       .then(response => {
-        this.setState({error: ""});
+        this.setState({ error: "" });
         this.props.updateUser(response);
-        this.props.history.push('/');
+        this.props.history.push("/");
       })
-      .catch(err => this.setState({error: err.response.data.message}))
-    ;
-  }
+      .catch(err => this.setState({ error: err.response.data.message }));
+  };
 
-  handleChange = (event) => {
-    const {name, value} = event.target;
-    this.setState({[name]: value});
-  }
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   render() {
     return (
-      <Popin one={(
-        <>
-          <h1>Sign up</h1>
-          
-          <form onSubmit={this.handleSubmit}>
+      <Popin
+        one={
+          <>
+            <h1>Sign up</h1>
 
-            {this.state.error && (
-              <p className="error">{this.state.error}</p>
-            )}
-             <p>
-              <label>
-                <em>Vous êtes? </em>
-                <select name="clientType" value={this.state.clientType} onChange={this.handleChange}>
-                  <option value=""></option>
-                  <option value="Association">Association</option>
-                  <option value="Restaurant">Restaurant</option>
-                </select>
-              </label>
-            </p>
+            <form onSubmit={this.handleSubmit}>
+              {this.state.error && <p className="error">{this.state.error}</p>}
+              <p>
+                <label>
+                  <em>Vous êtes? </em>
+                  <select
+                    name="clientType"
+                    value={this.state.clientType}
+                    onChange={this.handleChange}
+                  >
+                    <option value=""></option>
+                    <option value="association">Association</option>
+                    <option value="restaurant">Restaurant</option>
+                  </select>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <em>Raison sociale</em>
+                  <input
+                    type="text"
+                    name="companyName"
+                    value={this.state.companyName}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </p>
+              <p>
+                <label>
+                  <em>Mail</em>
+                  <input
+                    type="text"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <em>Mot de passe</em>
+                  <input
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </p>
+              <div className="cta">
+                <button type="submit" className="btn">
+                  Sign up
+                </button>
+              </div>
+            </form>
+
             <p>
-              <label>
-                <em>Raison sociale</em>
-                <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-              </label>
-              
+              <small>
+                Vous avez déjà un compte?<Link to="/login">Login</Link>
+              </small>
             </p>
-            <p>
-              <label>
-                <em>Mail</em>
-                <input type="text" name="mail" value={this.state.mail} onChange={this.handleChange} />
-              </label>
-              
-            </p>
-
-            <p>
-              <label>
-                <em>Mot de passe</em>
-                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-              </label>
-            </p>
-            <div className="cta">
-                <button type="submit" className="btn">Sign up</button>
-            </div>
-          </form>
-
-          <p>
-            <small>Vous avez déjà un compte?<Link to="/login">Login</Link></small>
-          </p>
-
-        </>
-      )} />
+          </>
+        }
+      />
     );
   }
 }
