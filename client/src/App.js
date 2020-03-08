@@ -1,33 +1,36 @@
-import React, { Component } from 'react';
-import './App.scss';
+import React, { Component } from "react";
+import "./App.scss";
 
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from "react-router-dom";
 
-import Homepage from './components/auth/Homepage.js'
-import Signup from './components/auth/Signup.js';
-import Login from './components/auth/Login.js';
-import Profile from './components/auth/Profile.js';
+import Homepage from "./components/auth/Homepage.js";
+import Signup from "./components/auth/Signup.js";
+import Login from "./components/auth/Login.js";
+import Profile from "./components/auth/Profile.js";
 
-import authService from './components/auth/auth-service.js';
+import Navbar from "./components/navigation/Navbar";
+import Menu from "./components/navigation/Menu";
+
+import authService from "./components/auth/auth-service.js";
 
 class App extends Component {
   state = {
     user: {}
-  }
+  };
 
   fetchUser = () => {
     if (!this.state.user._id) {
-      authService.loggedin()
-        .then(data => this.setState({user: data}))
-        .catch(err => this.setState({user: {}}))
-      ;
+      authService
+        .loggedin()
+        .then(data => this.setState({ user: data }))
+        .catch(err => this.setState({ user: {} }));
     } else {
-      console.log('user already in the state')
+      console.log("user already in the state");
     }
   };
 
-  updateUser = (data) => {
-    this.setState({user: data});
+  updateUser = data => {
+    this.setState({ user: data });
   };
 
   componentDidMount() {
@@ -35,37 +38,63 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.user)
+    console.log(this.state.user);
     return (
       <div>
-      <header>Logo-home</header>
-      <Route render={props => (
-        <div className="App" data-route={props.location.pathname}> {/* data-route="/" allow us to style pages */}
+        <Navbar user={this.state.user} />
+        <Route
+          render={props => (
+            <div className="App" data-route={props.location.pathname}>
+              {" "}
+              {/* data-route="/" allow us to style pages */}
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={props => <Homepage user={this.state.user} />}
+                />
 
-          <Switch>
-            <Route exact path="/" render={(props) => (
-              <Homepage user={this.state.user} />
-            )} />
+                <Route
+                  exact
+                  path="/signup"
+                  render={props => (
+                    <Signup
+                      updateUser={this.updateUser}
+                      history={props.history}
+                    />
+                  )}
+                />
 
-            <Route exact path="/signup" render={(props) => (
-              <Signup updateUser={this.updateUser} history={props.history} />
-            )} />
+                <Route
+                  exact
+                  path="/login"
+                  render={props => (
+                    <Login
+                      updateUser={this.updateUser}
+                      history={props.history}
+                    />
+                  )}
+                />
 
-            <Route exact path="/login" render={(props) => (
-              <Login updateUser={this.updateUser} history={props.history} />
-            )} />
+                <Route
+                  exact
+                  path="/profile"
+                  render={props => (
+                    <Profile
+                      user={this.state.user}
+                      updateUser={this.updateUser}
+                      history={props.history}
+                    />
+                  )}
+                />
 
-            <Route exact path="/profile" render={(props) => (
-              <Profile user={this.state.user} updateUser={this.updateUser} history={props.history} />
-            )} />
-
-            {/* last route, ie: 404 */}
-            <Route render={() => (<h1>Not Found</h1>)} />
-
-          </Switch>
-        </div>
-      )} />
-      <header>Logo-home</header>
+                {/* last route, ie: 404 */}
+                <Route render={() => <h1>Not Found</h1>} />
+              </Switch>
+            </div>
+          )}
+        />
+        {this.state.user._id ? <Menu user={this.state.user} /> : ""}
       </div>
     );
   }

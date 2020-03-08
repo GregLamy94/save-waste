@@ -8,9 +8,9 @@ export default {
     withCredentials: true
   }),
 
-  login(mail, password) {
+  login(email, password) {
     return this.service
-      .post("/login", { mail, password })
+      .post("/login", { email, password })
       .then(response => response.data);
   },
 

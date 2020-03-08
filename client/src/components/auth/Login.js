@@ -1,72 +1,84 @@
-import React from 'react';
+import React from "react";
 
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import Popin from '../Popin.js';
-import authService from './auth-service.js';
+import Popin from "../Popin.js";
+import authService from "./auth-service.js";
 
 export default class extends React.Component {
   state = {
-    username: "",
+    email: "",
     password: "",
-
     error: ""
-  }
+  };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
 
-    authService.login(this.state.username, this.state.password)
+    authService
+      .login(this.state.email, this.state.password)
       .then(response => {
-        this.setState({error: ""});
+        this.setState({ error: "" });
 
         this.props.updateUser(response);
-        this.props.history.push('/');
+        this.props.history.push("/");
       })
-      .catch(err => this.setState({error: err.response.data.message}))
-    ;
-  }
+      .catch(err => this.setState({ error: err.response.data.message }));
+  };
 
-  handleChange = (event) => {
-    const {name, value} = event.target;
-    this.setState({[name]: value});
-  } 
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   render() {
     return (
-      <Popin one={(
-        <>
-          <h1>Log in</h1>
-          
-          <form onSubmit={this.handleSubmit}>
+      <Popin
+        one={
+          <>
+            <h1>Log in</h1>
 
-            {this.state.error && (
-              <p className="error">{this.state.error}</p>
-            )}
+            <form onSubmit={this.handleSubmit}>
+              {this.state.error && <p className="error">{this.state.error}</p>}
 
+              <p>
+                <label>
+                  <em>Mail</em>
+                  <input
+                    type="email"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </p>
+
+              <p>
+                <label>
+                  <em>Mot de passe</em>
+                  <input
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </p>
+
+              <div className="cta">
+                <button className="btn" type="submit">
+                  Log in
+                </button>
+              </div>
+            </form>
             <p>
-              <label>
-                <em>Mail</em>
-                <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-              </label>
+              <small>
+                Vous n'avez pas un compte? <Link to="/signup">S'inscrire</Link>
+              </small>
             </p>
-
-            <p>
-              <label>
-                <em>Mot de passe</em>
-                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-              </label>
-            </p>
-
-            <div className="cta">
-                <button className="btn" type="submit">Log in</button>
-            </div>
-          </form>
-          <p>
-            <small>Vous n'avez pas un compte?  <Link to="/signup">S'inscrire</Link></small>
-          </p>
-        </>
-      )} />
+          </>
+        }
+      />
     );
   }
 }
