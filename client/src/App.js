@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     console.log(this.state.user);
     return (
-      <div>
+      <div className="App">
         <Navbar user={this.state.user} />
         <Route
           render={props => (

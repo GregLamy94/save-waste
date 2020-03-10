@@ -2,7 +2,6 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-import Popin from "../Popin.js";
 import authService from "./auth-service.js";
 
 export default class extends React.Component {
@@ -11,7 +10,7 @@ export default class extends React.Component {
     companyName: "",
     email: "",
     password: "",
-    error: "",
+    error: ""
   };
 
   handleSubmit = event => {
@@ -40,76 +39,72 @@ export default class extends React.Component {
 
   render() {
     return (
-      <Popin
-        one={
-          <>
-            <h1>Sign up</h1>
+      <div className="container signup">
+        <h1>Sign up</h1>
 
-            <form onSubmit={this.handleSubmit}>
-              {this.state.error && <p className="error">{this.state.error}</p>}
-              <p>
-                <label>
-                  <em>Vous êtes? </em>
-                  <select
-                    name="clientType"
-                    value={this.state.clientType}
-                    onChange={this.handleChange}
-                  >
-                    <option value=""></option>
-                    <option value="association">Association</option>
-                    <option value="restaurant">Restaurant</option>
-                  </select>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <em>Raison sociale</em>
-                  <input
-                    type="text"
-                    name="companyName"
-                    value={this.state.companyName}
-                    onChange={this.handleChange}
-                  />
-                </label>
-              </p>
-              <p>
-                <label>
-                  <em>Mail</em>
-                  <input
-                    type="email"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  />
-                </label>
-              </p>
+        <form onSubmit={this.handleSubmit}>
+          {this.state.error && <p className="error">{this.state.error}</p>}
+          <p>
+            <label>
+              <em>Vous êtes? </em>
+              <select
+                name="clientType"
+                value={this.state.clientType}
+                onChange={this.handleChange}
+              >
+                <option value=""></option>
+                <option value="association">Association</option>
+                <option value="restaurant">Restaurant</option>
+              </select>
+            </label>
+          </p>
+          <p>
+            <label>
+              <em>Raison sociale</em>
+              <input
+                type="text"
+                name="companyName"
+                value={this.state.companyName}
+                onChange={this.handleChange}
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <em>Mail</em>
+              <input
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+            </label>
+          </p>
 
-              <p>
-                <label>
-                  <em>Mot de passe</em>
-                  <input
-                    type="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                  />
-                </label>
-              </p>
-              <div className="cta">
-                <button type="submit" className="btn">
-                  Sign up
-                </button>
-              </div>
-            </form>
+          <p>
+            <label>
+              <em>Mot de passe</em>
+              <input
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+            </label>
+          </p>
+          <div className="cta">
+            <button type="submit" className="btn">
+              Sign up
+            </button>
+          </div>
+        </form>
 
-            <p>
-              <small>
-                Vous avez déjà un compte?<Link to="/login">Login</Link>
-              </small>
-            </p>
-          </>
-        }
-      />
+        <p>
+          <small>
+            Vous avez déjà un compte?<Link to="/login">Login</Link>
+          </small>
+        </p>
+      </div>
     );
   }
 }
