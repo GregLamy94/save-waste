@@ -10,15 +10,6 @@ export default class extends React.Component {
     });
   };
 
-  handleUpload = event => {
-    let formData = new FormData();
-    formData.append("photo", event.target.files[0]);
-
-    authService.upload(formData).then(response => {
-      this.props.updateUser(response);
-    });
-  };
-
   render() {
     return (
       <>

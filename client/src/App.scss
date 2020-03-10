@@ -32,6 +32,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   padding: 0.3em 2em;
+  padding-bottom: 8vh;
 
   .cta {
     display: flex;
@@ -159,24 +160,8 @@ a.btn {
 */
 
 [data-route="/"],
-[data-route="/profile"] {
-  .popin__one {
-    display: block;
-    .cta {
-      margin-top: auto;
-      margin-bottom: 0;
-    }
-  }
-
-  p em {
-    font-style: normal;
-    color: gray;
-  }
-  p em + span {
-    display: flex;
-    font-size: 150%;
-  }
-
+[data-route="/profile"],
+[data-route="/profile/edit"] {
   //.btn.logout {background-color:transparent;color:red;}
 
   .btn + .btn {
