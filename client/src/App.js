@@ -87,6 +87,17 @@ class App extends Component {
                     />
                   )}
                 />
+                <Route
+                  exact
+                  path="/profile/edit"
+                  render={props => (
+                    <Profile
+                      user={this.state.user}
+                      updateUser={this.updateUser}
+                      {...props}
+                    />
+                  )}
+                />
 
                 {/* last route, ie: 404 */}
                 <Route render={() => <h1>Not Found</h1>} />

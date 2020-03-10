@@ -3,7 +3,6 @@ body {
 }
 
 .App {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -28,6 +27,17 @@ h1 {
   color: #648166;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.3em 2em;
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+  }
+}
 /*_   _             _                
  | \ | | __ ___   _| |__   __ _ _ __ 
  |  \| |/ _` \ \ / / '_ \ / _` | '__|
@@ -58,19 +68,24 @@ h1 {
     width: 2.7em;
   }
 }
+/*
+  ____             __ _ _      
+ |  _ \ _ __ ___  / _(_) | ___ 
+ | |_) | '__/ _ \| |_| | |/ _ \
+ |  __/| | | (_) |  _| | |  __/
+ |_|   |_|  \___/|_| |_|_|\___|
+                               
+*/
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2em;
-
-  .cta {
-    display: flex;
-    flex-direction: column;
+.profile {
+  h1 {
+    margin-top: 0;
+  }
+  .editIcon {
+    align-self: end;
+    width: 2em;
   }
 }
-
 /*
                     _       
                    (_)      
