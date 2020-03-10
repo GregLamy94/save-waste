@@ -11,7 +11,7 @@ export default class extends React.Component {
     companyName: "",
     email: "",
     password: "",
-    error: ""
+    error: "",
   };
 
   handleSubmit = event => {
