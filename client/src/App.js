@@ -12,6 +12,7 @@ import Navbar from "./components/navigation/Navbar";
 import MenuBar from "./components/navigation/MenuBar";
 
 import authService from "./components/auth/auth-service.js";
+import Dashboard from "./components/dashboard/Dashboard";
 
 class App extends Component {
   state = {
@@ -83,6 +84,17 @@ class App extends Component {
                     <Profile
                       user={this.state.user}
                       updateUser={this.updateUser}
+                      history={props.history}
+                    />
+                  )}
+                />
+
+                <Route
+                  exact
+                  path="/dashboard"
+                  render={props => (
+                    <Dashboard
+                      clientType={this.state.user.clientType}
                       history={props.history}
                     />
                   )}
