@@ -13,10 +13,6 @@ button {
 }
 
 form {
-  .error {
-    color: red;
-  }
-
   label em {
     font-style: normal;
     display: block;
@@ -37,6 +33,31 @@ h1 {
   .cta {
     display: flex;
     flex-direction: column;
+  }
+}
+
+/*_____                    
+|  ___|__  _ __ _ __ ___  
+| |_ / _ \| '__| '_ ` _ \ 
+|  _| (_) | |  | | | | | |
+|_|  \___/|_|  |_| |_| |_|
+*/
+
+.form {
+  padding-left: 2em;
+  .inputform {
+    border-radius: 10px;
+  }
+  .error {
+    color: red;
+  }
+  .my-select {
+    width: 56%;
+  }
+
+  label {
+    display: block;
+    margin-top: 1em;
   }
 }
 /*_   _             _                
@@ -129,7 +150,7 @@ h1 {
 
 .btn {
   display: inline-block;
-  background: #c0e3be;
+  background: #6fcf97;
   padding: 0.85em 4em;
   border-radius: 0.25em;
   font-weight: bold;
@@ -194,10 +215,6 @@ a.btn {
 
 [data-route="/login"],
 [data-route="/signup"] {
-  .btn {
-    background-color: #ffffff;
-  }
-
   .popin__one h1 {
     margin-top: 0;
   }
