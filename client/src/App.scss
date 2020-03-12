@@ -1,11 +1,10 @@
 body {
-  background-color: white;
+  background-color: grayscale($color: #e8d5d5);
 }
 
 .App {
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -198,6 +197,20 @@ a.btn {
     margin-top: 1em;
   }
 }
+//    _____           _____ _    _ ____   ____          _____  _____  
+//   |  __ \   /\    / ____| |  | |  _ \ / __ \   /\   |  __ \|  __ \ 
+//   | |  | | /  \  | (___ | |__| | |_) | |  | | /  \  | |__) | |  | |
+//   | |  | |/ /\ \  \___ \|  __  |  _ <| |  | |/ /\ \ |  _  /| |  | |
+//   | |__| / ____ \ ____) | |  | | |_) | |__| / ____ \| | \ \| |__| |
+//   |_____/_/    \_\_____/|_|  |_|____/ \____/_/    \_\_|  \_\_____/ 
+//                                                                    
+//   
+
+.dashboard{
+ 
+}
+
+
 /*
 //    _  _______ _____ 
 //   | |/ /  __ \_   _|
@@ -208,7 +221,24 @@ a.btn {
 //                     
 //                      
 */
-.Kpi{
-border: black 1px solid;
-margin: auto; 
+.Kpi1{
+  border:black 1px solid;
+  margin-top:none; 
+  background-color:#6fcf97;
+  width:auto; 
+  padding: 20px 90px; 
+}
+.Kpi2{
+  border:black 1px solid;
+  margin-top:10px; 
+  padding:auto; 
+}
+.Kpi3{
+border:grayscale($color: #e8d5d5) 1px solid;
+border-radius:5px; 
+margin-top:100px; 
+display:block; 
+background-color: white;
+padding: 20px 50px; 
+font-size:20px;
 }
