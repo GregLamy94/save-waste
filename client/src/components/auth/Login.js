@@ -32,48 +32,33 @@ export default class extends React.Component {
 
   render() {
     return (
-      <div className="container login">
+      <form className="form" onSubmit={this.handleSubmit}>
+        {this.state.error && <p className="error">{this.state.error}</p>}
         <h1>Log in</h1>
 
-        <form onSubmit={this.handleSubmit}>
-          {this.state.error && <p className="error">{this.state.error}</p>}
+        <label>Mail</label>
+        <input
+          type="email"
+          name="email"
+          value={this.state.email}
+          onChange={this.handleChange}
+        />
 
-          <p>
-            <label>
-              <em>Mail</em>
-              <input
-                type="email"
-                name="email"
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
-            </label>
-          </p>
+        <label>Mot de passe</label>
+        <input
+          type="password"
+          name="password"
+          value={this.state.password}
+          onChange={this.handleChange}
+        />
 
-          <p>
-            <label>
-              <em>Mot de passe</em>
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </label>
-          </p>
-
-          <div className="cta">
-            <button className="btn" type="submit">
-              Log in
-            </button>
-          </div>
-        </form>
+        <button className="btn" type="submit">
+          Log in
+        </button>
         <p>
-          <small>
-            Vous n'avez pas un compte? <Link to="/signup">S'inscrire</Link>
-          </small>
+          Vous n'avez pas un compte? <Link to="/signup">S'inscrire</Link>
         </p>
-      </div>
+      </form>
     );
   }
 }

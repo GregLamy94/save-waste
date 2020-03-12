@@ -2,28 +2,14 @@ import React from "react";
 
 import authService from "./auth-service.js";
 import { Link, Redirect } from "react-router-dom";
-
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import Address from "./Address";
 
 export default class extends React.Component {
   state = {
-    user: {
-      companyName: this.props.user.companyName,
-      clientType: this.props.user.clientType,
-      contactName: this.props.user.contactName || "",
-      email: this.props.user.email,
-      phone: this.props.user.phone || "",
-      siret: this.props.user.siret || "", //uniquement sociétés
-      address: this.props.user.address || "",
-      imageUrl: this.props.user.imageUrl || ""
-    },
+    address: "",
     error: ""
-  };
-
-  logout = event => {
-    authService.logout().then(response => {
-      this.props.updateUser(false);
-    });
   };
 
   handleUpload = event => {
@@ -32,23 +18,6 @@ export default class extends React.Component {
 
     authService.upload(formData).then(response => {
       this.props.updateUser(response);
-    });
-  };
-
-  handleSubmit = () => {
-    authService.edit(this.state.user).then(response => {
-      this.props.updateUser(response);
-      this.props.history.push("/profile");
-    });
-  };
-
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      user: {
-        ...this.state.user,
-        [name]: value
-      }
     });
   };
 
@@ -62,102 +31,159 @@ export default class extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <>
         {!this.props.user._id ? (
           <Redirect to="/" />
         ) : (
-          <div className="container profile edit">
-            <img
-              className="avatar"
-              src={
-                this.state.imageUrl ||
-                "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"
-              }
-            />
-            <form onSubmit={this.handleSubmit}>
-              {this.state.error && <p className="error">{this.state.error}</p>}
+          <Formik
+            initialValues={{
+              companyName: this.props.user.companyName,
+              clientType: this.props.user.clientType,
+              contactName: this.props.user.contactName || "",
+              email: this.props.user.email,
+              phone: this.props.user.phone || "",
+              siret: this.props.user.siret || "", //uniquement sociétés
+              address: this.props.user.address || "",
+              imageUrl: this.props.user.imageUrl || "",
+              error: ""
+            }}
+            validationSchema={Yup.object({
+              companyName: Yup.string()
+                .max(30, "Doit contenir moins de 30 caractères")
+                .required("Required"),
+              email: Yup.string()
+                .email("Adresse email non valide")
+                .required("Required"),
+              clientType: Yup.string()
+                .oneOf(["association", "restaurant"], "Typologie invalide")
+                .required("Required"),
+              contactName: Yup.string().max(
+                30,
+                "Doit contenir moins de 30 caractères"
+              ),
+              siret: Yup.number()
+            })}
+            onSubmit={(values, { setSubmitting }) => {
+              const {
+                email,
+                companyName,
+                clientType,
+                siret,
+                contactName,
+                address,
+                imageUrl,
+                phone
+              } = values;
+              authService
+                .edit({
+                  clientType,
+                  companyName,
+                  email,
+                  contactName,
+                  address,
+                  siret,
+                  imageUrl,
+                  phone
+                })
+                .then(response => {
+                  this.props.updateUser(response);
+                  this.props.history.push("/profile");
+                });
+            }}
+          >
+            {({ values, setFieldValue }) => {
+              console.log(values);
+              return (
+                <Form className="form">
+                  <img
+                    className="avatar"
+                    src={
+                      this.props.user.imageUrl ||
+                      "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"
+                    }
+                    alt="avatar"
+                  />
+                  <input
+                    id="file"
+                    name="imageUrl"
+                    type="file"
+                    onChange={event => {
+                      this.handleUpload(event);
+                    }}
+                  />
 
-              <p>
-                <label>
-                  <em>Vous êtes? </em>
-                  <select
-                    name="clientType"
-                    value={this.state.user.clientType}
-                    onChange={this.handleChange}
-                  >
+                  <label htmlFor="clientType">Vous êtes?</label>
+                  <Field name="clientType" as="select" className="my-select">
                     <option value=""></option>
                     <option value="association">Association</option>
                     <option value="restaurant">Restaurant</option>
-                  </select>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <em>Raison sociale</em>
-                  <input
-                    type="text"
+                  </Field>
+
+                  <ErrorMessage
+                    component="span"
+                    className="error"
+                    name="clientType"
+                  />
+
+                  <label htmlFor="companyName">Raison Sociale</label>
+
+                  <Field name="companyName" type="text" />
+
+                  <ErrorMessage
+                    component="span"
+                    className="error"
                     name="companyName"
-                    value={this.state.user.companyName}
-                    onChange={this.handleChange}
                   />
-                </label>
-              </p>
 
-              <p>
-                <label>
-                  <em>Mail</em>
-                  <input
-                    type="email"
+                  <label htmlFor="email">Email </label>
+
+                  <Field name="email" type="email" />
+
+                  <ErrorMessage
+                    component="span"
+                    className="error"
                     name="email"
-                    value={this.state.user.email}
-                    onChange={this.handleChange}
                   />
-                </label>
-              </p>
 
-              <p>
-                <label>
-                  <em>Contact Name</em>
-                  <input
-                    type="text"
+                  <label htmlFor="contactName">Contact </label>
+
+                  <Field name="contactName" type="text" />
+
+                  <ErrorMessage
+                    component="span"
+                    className="error"
                     name="contactName"
-                    value={this.state.user.contactName}
-                    onChange={this.handleChange}
                   />
-                </label>
-              </p>
 
-              <p>
-                <label>
-                  <em>N° de Téléphone</em>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={this.state.user.phone}
-                    onChange={this.handleChange}
-                  />
-                </label>
-              </p>
+                  <label htmlFor="address">Adresse </label>
 
-              <p>
-                <label>
-                  <em>Numéro Siret</em>
-                  <input
-                    type="number"
-                    name="siret"
-                    value={this.state.user.siret}
-                    onChange={this.handleChange}
-                  />
-                </label>
-              </p>
-              <Address updateAddress={this.updateAddress} />
+                  <Field name="address" type="text" />
 
-              <button className="btn" type="submit">
-                Submit
-              </button>
-            </form>
-          </div>
+                  <label htmlFor="phone">Téléphone </label>
+
+                  <Field name="phone" type="tel" />
+
+                  {this.props.user.clientType === "restaurant" ? (
+                    <>
+                      <label htmlFor="siret">Siret </label>
+
+                      <Field name="siret" type="number" />
+
+                      <ErrorMessage
+                        component="span"
+                        className="error"
+                        name="siret"
+                      />
+                    </>
+                  ) : null}
+
+                  <button className="btn">Submit</button>
+                </Form>
+              );
+            }}
+          </Formik>
         )}
       </>
     );

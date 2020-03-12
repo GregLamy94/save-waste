@@ -16,7 +16,8 @@ export default class extends React.Component {
           email: "",
           password: "",
           passwordConfirmation: "",
-          error: ""
+          error: "",
+          exampleArray: [{ obj: 1 }, { obj: 2 }]
         }}
         validationSchema={Yup.object({
           companyName: Yup.string()
@@ -48,10 +49,15 @@ export default class extends React.Component {
         }}
       >
         {({ values, setFieldValue }) => {
+          const handleAddDon = () =>
+            setFieldValue("exampleArray", [...values.exampleArray, { obj: 1 }]);
+          console.log(values);
           return (
             <Form className="form">
               <h1>Sign up</h1>
               <label htmlFor="clientType">Vous êtes?</label>
+
+              <button onClick={handleAddDon}>+</button>
 
               <Field name="clientType" as="select" className="my-select">
                 <option value=""></option>
@@ -92,7 +98,7 @@ export default class extends React.Component {
               />
 
               <label htmlFor="passwordConfirmation">
-                Confirmation du mot de passe{" "}
+                Confirmation Mot de passe{" "}
               </label>
 
               <Field name="passwordConfirmation" type="password" />
@@ -104,10 +110,6 @@ export default class extends React.Component {
               />
 
               <button className="btn">Submit</button>
-              <p>
-                Si vous avez déjà un compte vous pouvez vous{" "}
-                <Link to="/login">Loger</Link>
-              </p>
             </Form>
           );
         }}

@@ -44,20 +44,52 @@ h1 {
 */
 
 .form {
-  padding-left: 2em;
-  .inputform {
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 2em 10vh 2em;
+  align-items: center;
+
+  input {
+    height: 30px;
+    font-size: 0.8em;
+    padding-left: 0.5rem;
+    border-radius: 3px;
+    border: none;
+    background-color: #f6f6f6;
+    width: 80%;
+  }
+  label,
+  span {
+    width: 80%;
+  }
+  .my-select {
+    height: 30px;
+    font-size: 0.8em;
+    padding-left: 0.5rem;
+    border-radius: 3px;
+    border: none;
+    background-color: #f6f6f6;
+    width: 80%;
   }
   .error {
     color: red;
-  }
-  .my-select {
-    width: 56%;
   }
 
   label {
     display: block;
     margin-top: 1em;
+  }
+
+  span {
+    display: block;
+  }
+  .btn {
+    margin-top: 2em;
+    width: 150px;
+  }
+  p {
+    font-size: 12px;
+    width: 80%;
   }
 }
 /*_   _             _                
@@ -212,17 +244,3 @@ a.btn {
            __/ |                   __/ |           | |    
           |___/                   |___/            |_|    
 */
-
-[data-route="/login"],
-[data-route="/signup"] {
-  .popin__one h1 {
-    margin-top: 0;
-  }
-
-  p small {
-    color: gray;
-  }
-  p small + .btn {
-    margin-top: 1em;
-  }
-}
