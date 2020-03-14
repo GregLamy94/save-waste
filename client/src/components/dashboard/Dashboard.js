@@ -1,5 +1,7 @@
 import React from "react";
 import Kpi from "./Kpi.js"; 
+import MenuBar from "../navigation/MenuBar.js"; 
+
 //import { Link } from "react-router-dom";
 
 class Dashboard extends React.Component {
@@ -12,7 +14,9 @@ class Dashboard extends React.Component {
       nbmealsGiven={this.props.nbmealsGiven}
       emissionsCO2={this.props.emissionsCO2}
       donsonGoing={this.props.donsonGoing}/>
+      <MenuBar/>
       </div>
+      
     )
   }
 }
