@@ -7,7 +7,8 @@ import Homepage from "./components/auth/Homepage.js";
 import Signup from "./components/auth/Signup.js";
 import Login from "./components/auth/Login.js";
 import Profile from "./components/auth/Profile.js";
-
+import ProfileEdit from "./components/auth/ProfileEdit.js";
+import Address from "./components/auth/Address.js";
 import Navbar from "./components/navigation/Navbar";
 import MenuBar from "./components/navigation/MenuBar";
 
@@ -91,7 +92,18 @@ class App extends Component {
                   exact
                   path="/profile/edit"
                   render={props => (
-                    <Profile
+                    <ProfileEdit
+                      user={this.state.user}
+                      updateUser={this.updateUser}
+                      {...props}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/address"
+                  render={props => (
+                    <Address
                       user={this.state.user}
                       updateUser={this.updateUser}
                       {...props}

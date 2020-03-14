@@ -10,15 +10,6 @@ export default class extends React.Component {
     });
   };
 
-  handleUpload = event => {
-    let formData = new FormData();
-    formData.append("photo", event.target.files[0]);
-
-    authService.upload(formData).then(response => {
-      this.props.updateUser(response);
-    });
-  };
-
   render() {
     return (
       <>
@@ -39,10 +30,13 @@ export default class extends React.Component {
 
             <h1>{this.props.user.companyName}</h1>
             <div className="info">
-              <p>{this.props.user.clientType}</p>
+              <p>
+                {this.props.user.clientType.charAt(0).toUpperCase() +
+                  this.props.user.clientType.slice(1)}
+              </p>
               <p>email : {this.props.user.email}</p>
               <p>
-                Contact Name :{" "}
+                Nom de contact :{" "}
                 {this.props.user.contactName ? (
                   <span>{this.props.user.contactName}</span>
                 ) : (
@@ -50,7 +44,7 @@ export default class extends React.Component {
                 )}{" "}
               </p>
               <p>
-                Phone :{" "}
+                Téléphone :{" "}
                 {this.props.user.phone ? (
                   <span>{this.props.user.phone}</span>
                 ) : (
@@ -58,8 +52,8 @@ export default class extends React.Component {
                 )}{" "}
               </p>
               <p>
-                Address :{" "}
-                {this.props.user.address && this.props.user.address ? (
+                Adresse :{" "}
+                {this.props.user.address ? (
                   <span>
                     {this.props.user.address.street},{" "}
                     {this.props.user.address.zipCode},{" "}
@@ -69,6 +63,16 @@ export default class extends React.Component {
                   " "
                 )}{" "}
               </p>
+              {this.props.user.clientType === "restaurant" ? (
+                <p>
+                  Siret :{" "}
+                  {this.props.user.siret ? (
+                    <span>{this.props.user.address.siret}, </span>
+                  ) : (
+                    " "
+                  )}{" "}
+                </p>
+              ) : null}
             </div>
             <div className="cta">
               <button className="btn logout" onClick={this.logout}>
