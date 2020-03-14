@@ -3,7 +3,7 @@ import Script from "react-load-script";
 
 class Address extends React.Component {
   state = {
-    address: "",
+    address: this.props.address || "",
     results: []
   };
 
@@ -39,17 +39,17 @@ class Address extends React.Component {
       this.setState({
         address: addressObject.formatted_address
       });
+      this.props.pushAddress(addressObject.formatted_address);
     }
   };
 
   render() {
     return (
-      <div>
+      <div className="address">
         <Script
-          url={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`}
+          url={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCEIV2Qpr3Jruoar-cm6RrUo6mBvyg7YKM&libraries=places`}
           onLoad={this.handleScriptLoad}
         />
-        <label>Adresse </label>
         <input
           id="autocomplete"
           type="text"
@@ -58,14 +58,6 @@ class Address extends React.Component {
           onChange={this.handleChange}
           list="list"
         />
-        <datalist id="list">
-          {/* {this.state.results.map(address => {
-            return <option key={address}>{address}</option>;
-          })} */}
-          <option value="7 rue civiale" />
-          <option value="7 rue Mitoni" />
-          <option value="7 rue Huilll" />
-        </datalist>
       </div>
     );
   }

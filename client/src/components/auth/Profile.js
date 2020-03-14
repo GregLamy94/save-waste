@@ -54,11 +54,7 @@ export default class extends React.Component {
               <p>
                 Adresse :{" "}
                 {this.props.user.address ? (
-                  <span>
-                    {this.props.user.address.street},{" "}
-                    {this.props.user.address.zipCode},{" "}
-                    {this.props.user.address.city}{" "}
-                  </span>
+                  <span>{this.props.user.address}</span>
                 ) : (
                   " "
                 )}{" "}

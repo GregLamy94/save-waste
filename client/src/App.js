@@ -11,7 +11,7 @@ import ProfileEdit from "./components/auth/ProfileEdit.js";
 import Address from "./components/auth/Address.js";
 import Navbar from "./components/navigation/Navbar";
 import MenuBar from "./components/navigation/MenuBar";
-
+import DonationForm from "./components/DonationForm";
 import authService from "./components/auth/auth-service.js";
 
 class App extends Component {
@@ -97,6 +97,13 @@ class App extends Component {
                       updateUser={this.updateUser}
                       {...props}
                     />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/donation/new"
+                  render={props => (
+                    <DonationForm user={this.state.user} {...props} />
                   )}
                 />
                 <Route

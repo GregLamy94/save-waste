@@ -58,6 +58,12 @@ h1 {
     background-color: #f6f6f6;
     width: 80%;
   }
+  .address {
+    width: 80%;
+    input {
+      width: 100%;
+    }
+  }
   label,
   span {
     width: 80%;
@@ -144,6 +150,79 @@ h1 {
   .editIcon {
     align-self: end;
     width: 2em;
+  }
+}
+
+/*
+  ____                    _   _             _____                    
+ |  _ \  ___  _ __   __ _| |_(_) ___  _ __ |  ___|__  _ __ _ __ ___  
+ | | | |/ _ \| '_ \ / _` | __| |/ _ \| '_ \| |_ / _ \| '__| '_ ` _ \ 
+ | |_| | (_) | | | | (_| | |_| | (_) | | | |  _| (_) | |  | | | | | |
+ |____/ \___/|_| |_|\__,_|\__|_|\___/|_| |_|_|  \___/|_|  |_| |_| |_|
+                                                                     
+*/
+
+.form.donation {
+  padding: 0.6em;
+  padding-bottom: 10vh;
+  .plus {
+    box-shadow: rgba(171, 195, 173, 0.67) 0px 0px 4px 3px;
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .unitDon {
+    width: 100%;
+    font-size: 1em;
+    box-shadow: rgba(171, 195, 173, 0.67) 0px 0px 4px 3px;
+    padding: 0.3em 0.6em;
+    margin-bottom: 1em;
+
+    h2 {
+      font-size: 1.3em;
+    }
+
+    .produit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        width: 50%;
+      }
+
+      select {
+        width: 30%;
+        font-size: 1em;
+        text-align: right;
+        border: 1px solid black;
+      }
+    }
+    .quantity {
+      display: flex;
+      align-items: center;
+      input {
+        width: 20%;
+      }
+      .date {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .localisation {
+    width: 100%;
   }
 }
 /*

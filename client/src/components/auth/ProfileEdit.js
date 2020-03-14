@@ -24,8 +24,7 @@ export default class extends React.Component {
   updateAddress = address => {
     this.setState({
       user: {
-        ...this.state.user,
-        address: address
+        ...this.state.user
       }
     });
   };
@@ -94,7 +93,9 @@ export default class extends React.Component {
             }}
           >
             {({ values, setFieldValue }) => {
-              console.log(values);
+              const handleAddress = address => {
+                setFieldValue("address", address);
+              };
               return (
                 <Form className="form">
                   <img
@@ -157,9 +158,12 @@ export default class extends React.Component {
                     name="contactName"
                   />
 
-                  <label htmlFor="address">Adresse </label>
+                  <label>Adresse</label>
 
-                  <Field name="address" type="text" />
+                  <Address
+                    pushAddress={handleAddress}
+                    address={values.address}
+                  ></Address>
 
                   <label htmlFor="phone">Téléphone </label>
 
