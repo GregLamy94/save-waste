@@ -17,7 +17,9 @@ import Dashboard from "./components/dashboard/Dashboard";
 class App extends Component {
   state = {
     user: {},
-    terminatedDons: []
+    terminatedDons:[],
+    pendingDons:[],
+
   };
 
   fetchUser = () => {
@@ -97,7 +99,11 @@ class App extends Component {
                     <Dashboard
                       clientType={this.state.user.clientType}
                       history={props.history}
+                      donsonGoing={this.state.pendingDons.length}
+                      donsDone={this.state.terminatedDons.length}
                       amount={this.state.terminatedDons.length*7}
+                      nbmealsGiven={this.state.terminatedDons.length*5}
+                      emissionsCO2={this.state.terminatedDons.length*20}
                       
                     />
                   )}

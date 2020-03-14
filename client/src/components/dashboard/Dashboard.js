@@ -6,9 +6,13 @@ class Dashboard extends React.Component {
   render(){
     return(
       <div className="dashboard">
-      <Kpi x={this.props.amount}/>
+      <Kpi 
+      amount={this.props.amount}
+      donsDone={this.props.donsDone}
+      nbmealsGiven={this.props.nbmealsGiven}
+      emissionsCO2={this.props.emissionsCO2}
+      donsonGoing={this.props.donsonGoing}/>
       </div>
-
     )
   }
 }
