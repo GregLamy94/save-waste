@@ -17,9 +17,8 @@ import Dashboard from "./components/dashboard/Dashboard";
 class App extends Component {
   state = {
     user: {},
-    terminatedDons:[],
-    pendingDons:[],
-
+    terminatedDons: [],
+    pendingDons: []
   };
 
   fetchUser = () => {
@@ -101,10 +100,9 @@ class App extends Component {
                       history={props.history}
                       donsonGoing={this.state.pendingDons.length}
                       donsDone={this.state.terminatedDons.length}
-                      amount={this.state.terminatedDons.length*7}
-                      nbmealsGiven={this.state.terminatedDons.length*5}
-                      emissionsCO2={this.state.terminatedDons.length*20}
-                      
+                      amount={this.state.terminatedDons.length * 7}
+                      nbmealsGiven={this.state.terminatedDons.length * 5}
+                      emissionsCO2={this.state.terminatedDons.length * 20}
                     />
                   )}
                 />
@@ -116,6 +114,8 @@ class App extends Component {
           )}
         />
         {this.state.user._id ? <MenuBar user={this.state.user} /> : ""}
+        {/* cette condition ne foncitonne pas il faut la réparer et enlever le deuxieme menu */}
+        <MenuBar user={this.state.user} />
       </div>
     );
   }
