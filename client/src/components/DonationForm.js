@@ -1,30 +1,30 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import Address from "./auth/Address";
 import UnitDonation from "./UnitDonation";
 import donationServices from "./donationServices";
 
-export default class extends React.Component {
+class DonationForm extends React.Component {
   render() {
+    console.log("props", this.props);
     return (
       <Formik
         initialValues={{
           donationBox: [
             {
               productName: "",
-              productType: "",
+              productType: "Légumes",
               quantity: {
                 value: 0,
                 qtyType: "kg"
               },
-              expirationDate: Date.now()
+              expirationDate: new Date(Date.now())
             }
           ],
-          location: this.props.user.address
+          location: this.props.user.address || ""
         }}
         // validationSchema={Yup.object({
         //   productName: Yup.string()
@@ -58,7 +58,7 @@ export default class extends React.Component {
               ...values.donationBox,
               {
                 productName: "",
-                productType: "",
+                productType: "Légumes",
                 quantity: {
                   value: 0,
                   qtyType: "kg"
@@ -76,11 +76,13 @@ export default class extends React.Component {
             newDonationBox.splice(index, 1);
             setFieldValue("donationBox", newDonationBox);
           };
+          console.log("values", values);
+          console.log("values", values);
 
           return (
             <Form className="form donation">
               <h1>Faites un don</h1>
-              {/*<pre>{JSON.stringify(values, null, 4)}</pre>*/}
+              <pre>{JSON.stringify(values, null, 4)}</pre>
 
               {values.donationBox.map((donation, index) => {
                 return (
@@ -101,9 +103,10 @@ export default class extends React.Component {
                 <label htmlFor="location">Localisation du don</label>
                 <Address
                   pushAddress={handleAddress}
-                  address={values.location}
+                  address={this.props.user.address}
                 ></Address>
               </div>
+
               <button className="btn">Submit</button>
             </Form>
           );
@@ -112,3 +115,5 @@ export default class extends React.Component {
     );
   }
 }
+
+export default DonationForm;

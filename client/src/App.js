@@ -102,9 +102,11 @@ class App extends Component {
                 <Route
                   exact
                   path="/donation/new"
-                  render={props => (
-                    <DonationForm user={this.state.user} {...props} />
-                  )}
+                  render={props =>
+                    this.state.user.address && (
+                      <DonationForm user={this.state.user} {...props} />
+                    )
+                  }
                 />
                 <Route
                   exact

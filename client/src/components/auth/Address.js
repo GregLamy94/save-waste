@@ -44,10 +44,12 @@ class Address extends React.Component {
   };
 
   render() {
+    console.log("props", this.props.address);
+
     return (
       <div className="address">
         <Script
-          url={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCEIV2Qpr3Jruoar-cm6RrUo6mBvyg7YKM&libraries=places`}
+          url={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`}
           onLoad={this.handleScriptLoad}
         />
         <input
@@ -55,6 +57,7 @@ class Address extends React.Component {
           type="text"
           name="address"
           value={this.state.address}
+          placeholder={this.state.address}
           onChange={this.handleChange}
           list="list"
         />

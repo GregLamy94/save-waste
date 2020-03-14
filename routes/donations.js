@@ -45,7 +45,7 @@ router.post("/", (req, res, next) => {
 });
 
 //Récupère les dons pending pour les associations
-router.get("/donations/available", (req, res, next) => {
+router.get("/available", (req, res, next) => {
   if (!req.user || !req.user.clientType === "association") {
     res.status(401).json({
       message:
