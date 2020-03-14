@@ -70,7 +70,12 @@ h1 {
     border: none;
     background-color: #f6f6f6;
     width: 80%;
+
+    option {
+      height: 1em;
+    }
   }
+
   .error {
     color: red;
   }
@@ -90,6 +95,7 @@ h1 {
   p {
     font-size: 12px;
     width: 80%;
+    text-align: center;
   }
 }
 /*_   _             _                
