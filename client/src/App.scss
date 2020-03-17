@@ -50,10 +50,12 @@ h1 {
   bottom: 0;
   text-align: center;
   /* certainement à supprimer*/
-  background-color: red;
+  background-color: #f7dc00;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+
 
   img {
     width: 2.7em;
@@ -150,14 +152,14 @@ a.btn {
     color: gray;
   }
 
-  p em+span {
+  p em + span {
     display: flex;
     font-size: 150%;
   }
 
   //.btn.logout {background-color:transparent;color:red;}
 
-  .btn+.btn {
+  .btn + .btn {
     margin-top: 1em;
   }
 
@@ -199,22 +201,22 @@ a.btn {
     color: gray;
   }
 
-  p small+.btn {
+  p small + .btn {
     margin-top: 1em;
   }
 }
 
-//    _____           _____ _    _ ____   ____          _____  _____  
-//   |  __ \   /\    / ____| |  | |  _ \ / __ \   /\   |  __ \|  __ \ 
+//    _____           _____ _    _ ____   ____          _____  _____
+//   |  __ \   /\    / ____| |  | |  _ \ / __ \   /\   |  __ \|  __ \
 //   | |  | | /  \  | (___ | |__| | |_) | |  | | /  \  | |__) | |  | |
 //   | |  | |/ /\ \  \___ \|  __  |  _ <| |  | |/ /\ \ |  _  /| |  | |
 //   | |__| / ____ \ ____) | |  | | |_) | |__| / ____ \| | \ \| |__| |
-//   |_____/_/    \_\_____/|_|  |_|____/ \____/_/    \_\_|  \_\_____/ 
-//                                                                    
-//   
+//   |_____/_/    \_\_____/|_|  |_|____/ \____/_/    \_\_|  \_\_____/
+//
+//
 
-.dashboard {}
-
+.dashboard {
+}
 
 /*
 //    _  _______ _____ 
