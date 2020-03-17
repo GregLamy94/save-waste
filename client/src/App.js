@@ -43,7 +43,7 @@ class App extends Component {
   render() {
     console.log(this.state.user);
     return (
-      <div>
+      <div className="App">
         <Navbar user={this.state.user} />
         <Route
           render={props => (
@@ -87,6 +87,17 @@ class App extends Component {
                       user={this.state.user}
                       updateUser={this.updateUser}
                       history={props.history}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/profile/edit"
+                  render={props => (
+                    <Profile
+                      user={this.state.user}
+                      updateUser={this.updateUser}
+                      {...props}
                     />
                   )}
                 />

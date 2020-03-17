@@ -7,9 +7,11 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-router.post("/login", (req, res, next) => {
+router.post("/sessions", (req, res, next) => {
+  console.log("inside");
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
+      console.log("err");
       res
         .status(500)
         .json({ message: "Something went wrong authenticating user" });
@@ -17,6 +19,7 @@ router.post("/login", (req, res, next) => {
     }
 
     if (!theUser) {
+      console.log("no user");
       res.status(401).json(failureDetails); // `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
       return;
     }
@@ -24,6 +27,7 @@ router.post("/login", (req, res, next) => {
     // save user in session
     req.login(theUser, err => {
       if (err) {
+        console.log("login err");
         res.status(500).json({ message: "Session save went bad." });
         return;
       }
@@ -34,7 +38,7 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-router.post("/signup", (req, res, next) => {
+router.post("/users", (req, res, next) => {
   const email = req.body.email; // mail
   const companyName = req.body.companyName;
   const password = req.body.password;
@@ -80,12 +84,12 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
-router.get("/logout", (req, res) => {
+router.delete("/session", (req, res) => {
   req.logout();
   res.status(204).send();
 });
 
-router.get("/loggedin", (req, res, next) => {
+router.get("/user", (req, res, next) => {
   if (req.user) {
     res.status(200).json(req.user);
     return;
@@ -94,7 +98,7 @@ router.get("/loggedin", (req, res, next) => {
   res.status(403).json({ message: "Unauthorized" });
 });
 
-router.post("/edit", (req, res, next) => {
+router.put("/users/edit", (req, res, next) => {
   // Check user is logged in
   if (!req.user) {
     res
@@ -132,7 +136,7 @@ router.post("/edit", (req, res, next) => {
 });
 
 const uploader = require("../cloudinary.js");
-router.post("/upload", uploader.single("photo"), (req, res, next) => {
+router.post("/users/upload", uploader.single("image"), (req, res, next) => {
   // Check user is logged in
   if (!req.user) {
     res
@@ -148,7 +152,7 @@ router.post("/upload", uploader.single("photo"), (req, res, next) => {
   }
 
   // Updating user's `image`
-  req.user.image = req.file.secure_url;
+  req.user.imageUrl = req.file.secure_url;
 
   // Validating user before saving
   req.user.validate(function(error) {
