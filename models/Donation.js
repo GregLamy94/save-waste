@@ -13,7 +13,7 @@ const unityDonationSchema = new Schema({
     qtyType: {
       type: String,
       enum: ["qty", "kg"],
-      default: "qty"
+      default: "kg"
     }
   },
   expirationDate: Date
@@ -31,16 +31,17 @@ const donationSchema = new Schema(
       default: "pending"
     },
     taker: { type: Schema.Types.ObjectId, ref: "User" },
-    location: {
-      //is by default giver's registered address
-      street: String,
-      zipCode: Number,
-      city: String,
-      geo: {
-        lat: Number,
-        long: Number
-      }
-    }
+    location: ""
+    // {
+    //   //is by default giver's registered address
+    //   street: String,
+    //   zipCode: Number,
+    //   city: String,
+    //   geo: {
+    //     lat: Number,
+    //     long: Number
+    //   }
+    // }
   },
   {
     timestamps: {

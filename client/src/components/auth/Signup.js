@@ -1,114 +1,117 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 import authService from "./auth-service.js";
 
 export default class extends React.Component {
-  state = {
-    clientType: "",
-    companyName: "",
-    email: "",
-    password: "",
-    error: ""
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-
-    // 1. Signup
-    authService
-      .signup(
-        this.state.email,
-        this.state.password,
-        this.state.companyName,
-        this.state.clientType
-      )
-      .then(response => {
-        this.setState({ error: "" });
-        this.props.updateUser(response);
-        this.props.history.push("/");
-      })
-      .catch(err =>
-        this.setState({
-          error: (err.response && err.response.data.message) || err
-        })
-      );
-  };
-
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
   render() {
     return (
-      <div className="container signup">
-        <h1>Sign up</h1>
+      <Formik
+        initialValues={{
+          clientType: "",
+          companyName: "",
+          email: "",
+          password: "",
+          passwordConfirmation: "",
+          error: ""
+        }}
+        validationSchema={Yup.object({
+          companyName: Yup.string()
+            .max(30, "Doit contenir moins de 30 caractères")
+            .required("Required"),
+          password: Yup.string().min(8, "Doit contenir au moins 8 caractères"),
+          passwordConfirmation: Yup.string().oneOf(
+            [Yup.ref("password"), null],
+            "Les mots de passe doivent concorder"
+          ),
+          email: Yup.string()
+            .email("Adresse email non valide")
+            .required("Required"),
+          clientType: Yup.string()
+            .oneOf(["association", "restaurant"], "Typologie invalide")
+            .required("Required")
+        })}
+        onSubmit={(values, { setSubmitting }) => {
+          const { email, companyName, clientType, password } = values;
+          console.log("values", values);
+          authService
+            .signup(email, password, companyName, clientType)
+            .then(response => {
+              this.props.updateUser(response);
+              setSubmitting(false);
+              this.props.history.push("/");
+            })
+            .catch(err => console.log(err));
+        }}
+      >
+        {({ values, setFieldValue }) => {
+          return (
+            <Form className="form">
+              <h1>Sign up</h1>
+              <label htmlFor="clientType">Vous êtes?</label>
 
-        <form onSubmit={this.handleSubmit}>
-          {this.state.error && <p className="error">{this.state.error}</p>}
-          <p>
-            <label>
-              <em>Vous êtes? </em>
-              <select
-                name="clientType"
-                value={this.state.clientType}
-                onChange={this.handleChange}
-              >
+              <Field name="clientType" as="select" className="my-select">
                 <option value=""></option>
                 <option value="association">Association</option>
                 <option value="restaurant">Restaurant</option>
-              </select>
-            </label>
-          </p>
-          <p>
-            <label>
-              <em>Raison sociale</em>
-              <input
-                type="text"
+              </Field>
+
+              <ErrorMessage
+                component="span"
+                className="error"
+                name="clientType"
+              />
+
+              <label htmlFor="companyName">Raison Sociale</label>
+
+              <Field name="companyName" type="text" />
+
+              <ErrorMessage
+                component="span"
+                className="error"
                 name="companyName"
-                value={this.state.companyName}
-                onChange={this.handleChange}
               />
-            </label>
-          </p>
-          <p>
-            <label>
-              <em>Mail</em>
-              <input
-                type="email"
-                name="email"
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
-            </label>
-          </p>
 
-          <p>
-            <label>
-              <em>Mot de passe</em>
-              <input
-                type="password"
+              <label htmlFor="email">Email </label>
+
+              <Field name="email" type="email" />
+
+              <ErrorMessage component="span" className="error" name="email" />
+
+              <label htmlFor="password">Mot de passe </label>
+
+              <Field name="password" type="password" />
+
+              <ErrorMessage
+                component="span"
+                className="error"
                 name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
               />
-            </label>
-          </p>
-          <div className="cta">
-            <button type="submit" className="btn">
-              Sign up
-            </button>
-          </div>
-        </form>
 
-        <p>
-          <small>
-            Vous avez déjà un compte?<Link to="/login">Login</Link>
-          </small>
-        </p>
-      </div>
+              <label htmlFor="passwordConfirmation">
+                Confirmation du mot de passe{" "}
+              </label>
+
+              <Field name="passwordConfirmation" type="password" />
+
+              <ErrorMessage
+                component="span"
+                className="error"
+                name="passwordConfirmation"
+              />
+
+              <button className="btn">Submit</button>
+              <p>
+                Si vous avez déjà un compte vous pouvez vous{" "}
+                <Link to="/login">Loger</Link>
+              </p>
+            </Form>
+          );
+        }}
+      </Formik>
     );
   }
 }
