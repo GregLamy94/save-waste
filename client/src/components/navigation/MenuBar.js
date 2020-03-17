@@ -7,7 +7,11 @@ class MenuBar extends React.Component {
     return (
       <nav className="menu">
         <Link to="/dashboard">
-          <img src="/bar_chart.svg" alt="to dashboard" />{" "}
+
+          <img src="icon_dash.svg" alt="to dashboard" />{" "}
+
+          //<img src="/bar_chart.svg" alt="to dashboard" />{" "}
+
         </Link>
         <Link to="/menu">
           <img src="/menu.svg" alt="to menu" />{" "}
