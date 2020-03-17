@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.5",
     "axios": "^0.18.0",
+    "formik": "^2.1.4",
     "node-sass": "^4.11.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-load-script": "0.0.6",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "yup": "^0.28.3"
   },
   "scripts": {
     "start": "REACT_APP_APIURL=http://localhost:5000 react-scripts start",

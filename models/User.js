@@ -10,15 +10,16 @@ const userSchema = new Schema(
     password: String,
     phone: Number,
     siret: Number, //uniquement sociétés
-    address: {
-      street: String,
-      zipCode: Number,
-      city: String,
-      geo: {
-        lat: Number,
-        long: Number
-      }
-    },
+    // address: {
+    //   street: String,
+    //   zipCode: Number,
+    //   city: String,
+    //   geo: {
+    //     lat: Number,
+    //     long: Number
+    //   }
+    // },
+    address: "",
     imageUrl: String
   },
   {

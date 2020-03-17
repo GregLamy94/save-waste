@@ -4,19 +4,19 @@ import axios from "axios";
 
 export default {
   service: axios.create({
-    baseURL: `${process.env.REACT_APP_APIURL || "http://localhost:5000"}/auth`,
+    baseURL: `${process.env.REACT_APP_APIURL || "http://localhost:5000"}/`,
     withCredentials: true
   }),
 
   login(email, password) {
     return this.service
-      .post("/login", { email, password })
+      .post("/sessions", { email, password })
       .then(response => response.data);
   },
 
   signup(email, password, companyName, clientType) {
     return this.service
-      .post("/signup", {
+      .post("/users", {
         email,
         password,
         companyName,
@@ -26,26 +26,40 @@ export default {
   },
 
   loggedin() {
-    return this.service.get("/loggedin").then(response => response.data);
+    return this.service.get("/user").then(response => response.data);
   },
 
   logout() {
-    return this.service.get("/logout", {}).then(response => response.data);
+    return this.service.delete("/session", {}).then(response => response.data);
   },
 
-  edit({ clientType, username, mail }) {
+  edit({
+    clientType,
+    companyName,
+    email,
+    contactName,
+    address,
+    siret,
+    imageUrl,
+    phone
+  }) {
     return this.service
-      .post("/edit", {
+      .put("/users/edit", {
         clientType,
-        username,
-        mail
+        companyName,
+        email,
+        contactName,
+        address,
+        siret,
+        imageUrl,
+        phone
       })
       .then(response => response.data);
   },
 
   upload(formdata) {
     return this.service
-      .post("/upload", formdata)
+      .post("/users/upload", formdata)
       .then(response => response.data);
   }
 };

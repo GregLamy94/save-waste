@@ -53,7 +53,7 @@ app.use(
 require("./passport")(app);
 
 const authRoutes = require("./routes/auth");
-app.use("/auth", authRoutes);
+app.use("/", authRoutes);
 
 const donationRoutes = require("./routes/donations");
 app.use("/donations", donationRoutes);
