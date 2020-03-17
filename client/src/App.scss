@@ -5,7 +5,12 @@ body {
 .App {
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
+//   flex-direction: column;
+// >>>>>>> master
+=======
   flex-direction: column;
+>>>>>>> master
 }
 
 input,
@@ -125,12 +130,15 @@ h1 {
   height: 8vh;
   position: fixed;
   bottom: 0;
-  text-align: center; /* certainement à supprimer*/
-  background-color: white;
+  text-align: center;
+  /* certainement à supprimer*/
+  background-color: #f7dc00;
   border-top: 2px solid black;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+
 
   img {
     width: 2.7em;
@@ -236,7 +244,6 @@ h1 {
  | .__/ \___/| .__/|_|_| |_|
  | |         | |            
  |_|         |_|            
-*/
 
 .popin {
   background: white;
@@ -277,9 +284,11 @@ h1 {
   text-align: center;
   cursor: pointer;
 }
+
 button.btn {
   border: inherit;
 }
+
 a.btn {
   text-decoration: none;
   color: inherit;
@@ -300,8 +309,31 @@ a.btn {
 */
 
 [data-route="/"],
+<<<<<<< HEAD
+[data-route="/profile"] {
+  .popin__one {
+    display: block;
+
+    .cta {
+      margin-top: auto;
+      margin-bottom: 0;
+    }
+  }
+
+  p em {
+    font-style: normal;
+    color: gray;
+  }
+
+  p em + span {
+    display: flex;
+    font-size: 150%;
+  }
+
+=======
 [data-route="/profile"],
 [data-route="/profile/edit"] {
+>>>>>>> master
   //.btn.logout {background-color:transparent;color:red;}
 
   .btn + .btn {
@@ -345,23 +377,23 @@ a.btn {
   p small {
     color: gray;
   }
+
   p small + .btn {
     margin-top: 1em;
   }
 }
-//    _____           _____ _    _ ____   ____          _____  _____  
-//   |  __ \   /\    / ____| |  | |  _ \ / __ \   /\   |  __ \|  __ \ 
+
+//    _____           _____ _    _ ____   ____          _____  _____
+//   |  __ \   /\    / ____| |  | |  _ \ / __ \   /\   |  __ \|  __ \
 //   | |  | | /  \  | (___ | |__| | |_) | |  | | /  \  | |__) | |  | |
 //   | |  | |/ /\ \  \___ \|  __  |  _ <| |  | |/ /\ \ |  _  /| |  | |
 //   | |__| / ____ \ ____) | |  | | |_) | |__| / ____ \| | \ \| |__| |
-//   |_____/_/    \_\_____/|_|  |_|____/ \____/_/    \_\_|  \_\_____/ 
-//                                                                    
-//   
+//   |_____/_/    \_\_____/|_|  |_|____/ \____/_/    \_\_|  \_\_____/
+//
+//
 
-.dashboard{
- 
+.dashboard {
 }
-
 
 /*
 //    _  _______ _____ 
@@ -373,26 +405,28 @@ a.btn {
 //                     
 //                      
 */
-.Kpi1{
-  border:black 1px solid;
-  margin-top:none; 
-  background-color:#6fcf97;
-  width:auto; 
-  padding: 20px 90px; 
+.Kpi1 {
+  border: black 1px solid;
+  margin-top: none;
+  background-color: #6fcf97;
+  width: auto;
+  padding: 20px 90px;
 }
-.Kpi2{
-  border:black 1px solid;
-  margin-top:10px; 
-  padding:auto; 
+
+.Kpi2 {
+  border: black 1px solid;
+  margin-top: 10px;
+  padding: auto;
 }
-.Kpi3{
-border:grayscale($color: #e8d5d5) 1px solid;
-border-radius:5px; 
-margin-top:100px; 
-display:block; 
-background-color: white;
-padding: 20px 50px; 
-font-size:20px;
+
+.Kpi3 {
+  border: grayscale($color: #e8d5d5) 1px solid;
+  border-radius: 5px;
+  margin-top: 100px;
+  display: block;
+  background-color: white;
+  padding: 20px 50px;
+  font-size: 20px;
 }
 //     _____          _____  _____   _____       _____   ____  _   _  _____ 
 //    / ____|   /\   |  __ \|  __ \ / ____|     |  __ \ / __ \| \ | |/ ____|

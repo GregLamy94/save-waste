@@ -3,7 +3,7 @@ const passport = require("passport");
 const router = express.Router();
 const Donation = require("../models/Donation");
 
-router.post("/", (req, res, next) => {
+router.post("/new-donation", (req, res, next) => {
   if (!req.user || !req.user.clientType === "restaurant") {
     res.status(401).json({
       message: "Vous devez être un restaurateur authentifié pour créer des dons"
@@ -46,6 +46,7 @@ router.post("/", (req, res, next) => {
 
 //Récupère les dons pending pour les associations
 router.get("/available", (req, res, next) => {
+  console.log(req.user);
   if (!req.user || !req.user.clientType === "association") {
     res.status(401).json({
       message:
@@ -64,4 +65,5 @@ router.get("/available", (req, res, next) => {
         .json({ message: "Something went wrong during donations request" });
     });
 });
+
 module.exports = router;

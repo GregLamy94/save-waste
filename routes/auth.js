@@ -8,8 +8,10 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 router.post("/sessions", (req, res, next) => {
+  console.log("inside");
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
+      console.log("err");
       res
         .status(500)
         .json({ message: "Something went wrong authenticating user" });
@@ -17,6 +19,7 @@ router.post("/sessions", (req, res, next) => {
     }
 
     if (!theUser) {
+      console.log("no user");
       res.status(401).json(failureDetails); // `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
       return;
     }
@@ -24,6 +27,7 @@ router.post("/sessions", (req, res, next) => {
     // save user in session
     req.login(theUser, err => {
       if (err) {
+        console.log("login err");
         res.status(500).json({ message: "Session save went bad." });
         return;
       }
