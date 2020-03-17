@@ -5,8 +5,12 @@ body {
 .App {
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
 //   flex-direction: column;
 // >>>>>>> master
+=======
+  flex-direction: column;
+>>>>>>> master
 }
 
 input,
@@ -15,10 +19,6 @@ button {
 }
 
 form {
-  .error {
-    color: red;
-  }
-
   label em {
     font-style: normal;
     display: block;
@@ -34,10 +34,80 @@ h1 {
   flex-direction: column;
   align-items: center;
   padding: 0.3em 2em;
+  padding-bottom: 8vh;
 
   .cta {
     display: flex;
     flex-direction: column;
+  }
+}
+
+/*_____                    
+|  ___|__  _ __ _ __ ___  
+| |_ / _ \| '__| '_ ` _ \ 
+|  _| (_) | |  | | | | | |
+|_|  \___/|_|  |_| |_| |_|
+*/
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 2em 10vh 2em;
+  align-items: center;
+
+  input {
+    height: 30px;
+    font-size: 0.8em;
+    padding-left: 0.5rem;
+    border-radius: 3px;
+    border: none;
+    background-color: #f6f6f6;
+    width: 80%;
+  }
+  .address {
+    width: 80%;
+    input {
+      width: 100%;
+    }
+  }
+  label,
+  span {
+    width: 80%;
+  }
+  .my-select {
+    height: 30px;
+    font-size: 0.8em;
+    padding-left: 0.5rem;
+    border-radius: 3px;
+    border: none;
+    background-color: #f6f6f6;
+    width: 80%;
+
+    option {
+      height: 1em;
+    }
+  }
+
+  .error {
+    color: red;
+  }
+
+  label {
+    display: block;
+    margin-top: 1em;
+  }
+
+  span {
+    display: block;
+  }
+  .btn {
+    margin-top: 2em;
+    width: 150px;
+  }
+  p {
+    font-size: 12px;
+    width: 80%;
+    text-align: center;
   }
 }
 /*_   _             _                
@@ -63,6 +133,7 @@ h1 {
   text-align: center;
   /* certainement à supprimer*/
   background-color: #f7dc00;
+  border-top: 2px solid black;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -89,6 +160,79 @@ h1 {
   .editIcon {
     align-self: end;
     width: 2em;
+  }
+}
+
+/*
+  ____                    _   _             _____                    
+ |  _ \  ___  _ __   __ _| |_(_) ___  _ __ |  ___|__  _ __ _ __ ___  
+ | | | |/ _ \| '_ \ / _` | __| |/ _ \| '_ \| |_ / _ \| '__| '_ ` _ \ 
+ | |_| | (_) | | | | (_| | |_| | (_) | | | |  _| (_) | |  | | | | | |
+ |____/ \___/|_| |_|\__,_|\__|_|\___/|_| |_|_|  \___/|_|  |_| |_| |_|
+                                                                     
+*/
+
+.form.donation {
+  padding: 0.6em;
+  padding-bottom: 10vh;
+  .plus {
+    box-shadow: rgba(171, 195, 173, 0.67) 0px 0px 4px 3px;
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .unitDon {
+    width: 100%;
+    font-size: 1em;
+    box-shadow: rgba(171, 195, 173, 0.67) 0px 0px 4px 3px;
+    padding: 0.3em 0.6em;
+    margin-bottom: 1em;
+
+    h2 {
+      font-size: 1.3em;
+    }
+
+    .produit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        width: 50%;
+      }
+
+      select {
+        width: 30%;
+        font-size: 1em;
+        text-align: right;
+        border: 1px solid black;
+      }
+    }
+    .quantity {
+      display: flex;
+      align-items: center;
+      input {
+        width: 20%;
+      }
+      .date {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .localisation {
+    width: 100%;
   }
 }
 /*
@@ -132,7 +276,7 @@ h1 {
 
 .btn {
   display: inline-block;
-  background: #c0e3be;
+  background: #6fcf97;
   padding: 0.85em 4em;
   border-radius: 0.25em;
   font-weight: bold;
@@ -165,6 +309,7 @@ a.btn {
 */
 
 [data-route="/"],
+<<<<<<< HEAD
 [data-route="/profile"] {
   .popin__one {
     display: block;
@@ -185,6 +330,10 @@ a.btn {
     font-size: 150%;
   }
 
+=======
+[data-route="/profile"],
+[data-route="/profile/edit"] {
+>>>>>>> master
   //.btn.logout {background-color:transparent;color:red;}
 
   .btn + .btn {
@@ -279,3 +428,18 @@ a.btn {
   padding: 20px 50px;
   font-size: 20px;
 }
+//     _____          _____  _____   _____       _____   ____  _   _  _____ 
+//    / ____|   /\   |  __ \|  __ \ / ____|     |  __ \ / __ \| \ | |/ ____|
+//   | |       /  \  | |__) | |  | | (___ ______| |  | | |  | |  \| | (___  
+//   | |      / /\ \ |  _  /| |  | |\___ \______| |  | | |  | | . ` |\___ \ 
+//   | |____ / ____ \| | \ \| |__| |____) |     | |__| | |__| | |\  |____) |
+//    \_____/_/    \_\_|  \_\_____/|_____/      |_____/ \____/|_| \_|_____/ 
+//                                                                          
+//
+.cardClosed{
+  
+}
+.cardOpen{
+
+}
+

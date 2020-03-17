@@ -1,5 +1,6 @@
 import React from "react"; 
-import Dons from "../dons/Dons.js"; 
+import CarddonBooked from "../dons/Card_booked.js";
+import CarddonAvailable from "../dons/Card_available.js"; 
 
 
 class Kpi extends React.Component{
@@ -14,7 +15,9 @@ class Kpi extends React.Component{
                 <div className="Kpi2">
                 <p><img src="" alt="Logo" />{this.props.donsonGoing}Dons en cours</p>
                 </div>
-            
+
+                <CarddonBooked/>
+                <CarddonAvailable/>
                 
                 <div className= "Kpi3">
                 <h2>Vos données</h2>
