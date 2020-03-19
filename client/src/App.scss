@@ -5,12 +5,7 @@ body {
 .App {
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
-//   flex-direction: column;
-// >>>>>>> master
-=======
   flex-direction: column;
->>>>>>> master
 }
 
 input,
@@ -309,7 +304,6 @@ a.btn {
 */
 
 [data-route="/"],
-<<<<<<< HEAD
 [data-route="/profile"] {
   .popin__one {
     display: block;
@@ -330,11 +324,9 @@ a.btn {
     font-size: 150%;
   }
 
-=======
-[data-route="/profile"],
-[data-route="/profile/edit"] {
->>>>>>> master
-  //.btn.logout {background-color:transparent;color:red;}
+// [data-route="/profile"],
+// [data-route="/profile/edit"] {
+//   //.btn.logout {background-color:transparent;color:red;}
 
   .btn + .btn {
     margin-top: 1em;
