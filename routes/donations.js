@@ -35,6 +35,7 @@ router.post("/new-donation", (req, res, next) => {
   newDonation
     .save()
     .then(donation => {
+      User.findByIdAndUpdate(giver, { $push: { donationsArray: donation._id }});
       res.status(201).json(donation);
     })
     .catch(err => {
