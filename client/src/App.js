@@ -19,7 +19,8 @@ class App extends Component {
   state = {
     user: {},
     terminatedDons: [],
-    pendingDons: []
+    pendingDons: [],
+    listDons: []
   };
 
   fetchUser = () => {
@@ -104,11 +105,13 @@ class App extends Component {
                 />
                 <Route
                   exact
-                  path="/donation/new"
-                  render={props =>
-                    this.state.user.address && (
+                  path="/new-donation"
+                  render={
+                    props => <DonationForm user={this.state.user} {...props} />
+
+                    /*this.state.user.address && (
                       <DonationForm user={this.state.user} {...props} />
-                    )
+                    )*/
                   }
                 />
                 <Route

@@ -10,7 +10,7 @@ export default {
 
   createDonation(donationBox, location) {
     return this.service
-      .post("/donations", {
+      .post("/donations/new-donation", {
         donationBox,
         location
       })
