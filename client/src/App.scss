@@ -6,6 +6,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  color:#5E6488;
 }
 
 input,
@@ -111,32 +112,30 @@ h1 {
  | |\  | (_| |\ V /| |_) | (_| | |   
  |_| \_|\__,_| \_/ |_.__/ \__,_|_|                                       
 */
+
 .navbar {
-  background-color: #6fcf97;
-  height: 10vh;
+  height: 12vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.3em 1em;
+
+
+  img {
+    width: 3.8em;
+  }
 }
 
 .menu {
   width: 100%;
   height: 8vh;
-  position: fixed;
-  bottom: 0;
-  text-align: center;
-  /* certainement à supprimer*/
-  background-color: #f7dc00;
-  border-top: 2px solid black;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
-
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: white;
 
   img {
-    width: 2.7em;
+    width: 3.8em;
   }
 }
 /*
@@ -412,14 +411,23 @@ a.btn {
 }
 
 .Kpi3 {
-  border: grayscale($color: #e8d5d5) 1px solid;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-top: 100px;
+  margin: 15px;
   display: block;
   background-color: white;
-  padding: 20px 50px;
-  font-size: 20px;
+  padding: 3px 40px;
+  font-size: 14px;
+  font-family:'Open Sans';
+  h2{
+    text-align: center;
+    font-weight: 600;
+  }
+  img{
+    padding-right: 10px;
+  }
 }
+
 //     _____          _____  _____   _____       _____   ____  _   _  _____ 
 //    / ____|   /\   |  __ \|  __ \ / ____|     |  __ \ / __ \| \ | |/ ____|
 //   | |       /  \  | |__) | |  | | (___ ______| |  | | |  | |  \| | (___  
