@@ -71,7 +71,7 @@ function MenuBar() {
                 </Link>
               </div>
               <div className="iconMenu">
-                <Link to="/dashboard" className={classes.buttons}>
+                <Link to="/profile" className={classes.buttons}>
                   <img src="icon_profil.svg" alt="to profil" />{" "}
                 </Link>
               </div>

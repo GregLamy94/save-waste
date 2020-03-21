@@ -6,7 +6,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  color: #5E6488;
+  color: #5e6488;
   background: linear-gradient(
     rgba(111, 207, 151, 1) 0%,
     rgba(111, 207, 151, 1) 45%,
@@ -125,9 +125,9 @@ h1 {
   align-items: center;
   padding: 0.3em 1em;
 
-  h1{
-    font-size:22px;
-    color:#5E6488;
+  h1 {
+    font-size: 22px;
+    color: #5e6488;
     font-weight: 500;
   }
 
@@ -315,7 +315,8 @@ a.btn {
 */
 
 [data-route="/"],
-[data-route="/profile"] {
+[data-route="/profile"],
+[data-route="/profile/edit"] {
   .popin__one {
     display: block;
 
@@ -439,7 +440,7 @@ a.btn {
   padding: 0.3em;
   opacity: 0.8;
   font-weight: 600;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .Kpi3 {
