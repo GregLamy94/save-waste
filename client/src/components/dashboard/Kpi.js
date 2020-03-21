@@ -7,13 +7,12 @@ class Kpi extends React.Component {
     return (
       <div>
         <div className="Kpi1">
-          <h1>Tableau de bord</h1>
           <p>{this.props.amount}€</p>
         </div>
         <div className="Kpi2">
           <p>
             <img src="" alt="Logo" />
-            {this.props.donsonGoing.length}Dons en cours
+            {this.props.donsonGoing}Dons en cours
           </p>
         </div>
 
@@ -23,15 +22,15 @@ class Kpi extends React.Component {
         <div className="Kpi3">
           <h2>Vos données</h2>
           <p>
-            <img src="" alt="Logo" />
-            {this.props.donsDone.length}Dons réalisés
+            <img src="icon_bullet1.svg" alt="Logo" />
+            {this.props.donsDone}Dons réalisés
           </p>
           <p>
-            <img src="" alt="Logo" />
+            <img src="icon_bullet2.svg" alt="Logo" />
             {this.props.nbmealsGiven}Personnes bénéficiées
           </p>
           <p>
-            <img src="" alt="Logo" />
+            <img src="icon_bullet3.svg" alt="Logo" />
             {this.props.emissionsCO2}C02 Emissions CO2 évitées
           </p>
         </div>

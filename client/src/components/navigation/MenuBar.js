@@ -28,15 +28,7 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     margin: "0 auto",
     backgroundColor: "#F7DC00"
-  },
-  root: {
-    backgroundColor: "white",
-    color: "#FFFFFF",
-    height: "70px"
   }
-  // buttons: {
-  //   margin: "0 auto",
-  // }
 }));
 
 function MenuBar() {
@@ -44,40 +36,50 @@ function MenuBar() {
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        color="primary"
-        className={classes.appBar}
-        classes={{ root: classes.root }}
-      >
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="open drawer">
-            <MenuIcon />
-          </IconButton>
-          <Link to="/new-donation">
-            <Fab
-              color="secondary"
-              aria-label="add"
-              className={classes.fabButton}
-            >
-              <AddIcon />
-            </Fab>
-          </Link>
-          <Link to="/dashboard" className="buttons">
-            <img src="icon_dash.svg" alt="to dashboard" />{" "}
-          </Link>
-          <Link to="/dashboard" className={classes.buttons}>
-            <img src="icon_historic.svg" alt="to historic" />{" "}
-          </Link>
-          <Link to="/dashboard" className={classes.buttons}>
-            <img src="icon_profil.svg" alt="to profil" />{" "}
-          </Link>
-          <Link to="/dashboard" className={classes.buttons}>
-            <img src="icon_menu.svg" alt="to menu" />{" "}
-          </Link>
-        </Toolbar>
-      </AppBar>
+      <div>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          color="primary"
+          className={classes.appBar}
+          classes={{ root: classes.root }}
+        >
+          <Toolbar>
+            <Link to="/new-donation">
+              <Fab
+                color="secondary"
+                aria-label="add"
+                className={classes.fabButton}
+              >
+                <AddIcon />
+              </Fab>
+            </Link>
+
+            <div className="menu">
+            <div className="iconMenu">
+              <Link to="/dashboard" className="buttons">
+                <img src="icon_dash.svg" alt="to dashboard" />{" "}
+              </Link>
+            </div>
+            <div className="iconMenu">
+              <Link to="/dashboard" className={classes.buttons}>
+                <img src="icon_historic.svg" alt="to historic" />{" "}
+              </Link>
+            </div>
+            <div className="iconMenu">
+              <Link to="/dashboard" className={classes.buttons}>
+                <img src="icon_profil.svg" alt="to profil" />{" "}
+              </Link>
+            </div>
+            <div className="iconMenu">
+              <Link to="/dashboard" className={classes.buttons}>
+                <img src="icon_menu.svg" alt="to menu" />{" "}
+              </Link>
+            </div>
+          </div>
+          </Toolbar>
+        </AppBar>
+      </div>
     </React.Fragment>
   );
 }

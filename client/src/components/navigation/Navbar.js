@@ -7,8 +7,11 @@ export default props => {
   return (
     <nav className="navbar">
       <Link to="/">
-        <img src="" alt="LOGO" />
+        <img src="logo_saveWaste.png" alt="LOGO" />
       </Link>
+      <h1> 
+      [TITLE]
+      </h1>
       <Bell user={props.user} />
     </nav>
   );
