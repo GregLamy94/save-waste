@@ -29,7 +29,7 @@ class App extends Component {
   getCurrentPageName = currentPageName => {
     this.setState({ currentPageName });
   };
-  
+
   fetchUser = () => {
     if (!this.state.user._id) {
       authService
@@ -144,24 +144,11 @@ class App extends Component {
                 <Route
                   exact
                   path="/dashboard"
-                  render={props => (
-                    <Dashboard
-                      getCurrentPageName={this.getCurrentPageName}
-                      clientType={this.state.user.clientType}
-                      history={props.history}
-                      donsonGoing={this.state.pendingDons.length}
-                      donsDone={this.state.terminatedDons.length}
-                      amount={this.state.terminatedDons.length * 7}
-                      nbmealsGiven={this.state.terminatedDons.length * 5}
-                      emissionsCO2={this.state.terminatedDons.length * 20}
-                    />
-                  )}
-                  // ELISA ?
-                  // render={props =>
-                  //   this.state.user._id && (
-                  //     <Dashboard user={this.state.user} {...props} />
-                  //   )
-                  // }
+                  render={props =>
+                    this.state.user._id && (
+                      <Dashboard user={this.state.user} {...props} />
+                    )
+                  }
                 />
 
                 {/* last route, ie: 404 */}

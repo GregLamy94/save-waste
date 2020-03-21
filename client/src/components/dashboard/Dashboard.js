@@ -11,8 +11,11 @@ import donationServices from "../dons/donationServices";
 //import { Link } from "react-router-dom";
 
 class Dashboard extends React.Component {
+  state = {
+    donations: []
+  };
 
-  // PERMET DE RENDRE LE TITRE DE LA PAGE DYBAMIQUE --> A REPLACER 
+  // PERMET DE RENDRE LE TITRE DE LA PAGE DYBAMIQUE --> A REPLACER
   // componentDidMount(){
   //   this.props.getCurrentPageName("Tableau de bord");
   // }
