@@ -1,9 +1,10 @@
 body {
-  background-color: white;
+  background-color: grayscale($color: #e8d5d5);
 }
 
 .App {
   display: flex;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -124,12 +125,15 @@ h1 {
   height: 8vh;
   position: fixed;
   bottom: 0;
-  text-align: center; /* certainement à supprimer*/
-  background-color: white;
+  text-align: center;
+  /* certainement à supprimer*/
+  background-color: #f7dc00;
   border-top: 2px solid black;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+
 
   img {
     width: 2.7em;
@@ -235,7 +239,6 @@ h1 {
  | .__/ \___/| .__/|_|_| |_|
  | |         | |            
  |_|         |_|            
-*/
 
 .popin {
   background: white;
@@ -276,9 +279,11 @@ h1 {
   text-align: center;
   cursor: pointer;
 }
+
 button.btn {
   border: inherit;
 }
+
 a.btn {
   text-decoration: none;
   color: inherit;
@@ -299,9 +304,29 @@ a.btn {
 */
 
 [data-route="/"],
-[data-route="/profile"],
-[data-route="/profile/edit"] {
-  //.btn.logout {background-color:transparent;color:red;}
+[data-route="/profile"] {
+  .popin__one {
+    display: block;
+
+    .cta {
+      margin-top: auto;
+      margin-bottom: 0;
+    }
+  }
+
+  p em {
+    font-style: normal;
+    color: gray;
+  }
+
+  p em + span {
+    display: flex;
+    font-size: 150%;
+  }
+
+// [data-route="/profile"],
+// [data-route="/profile/edit"] {
+//   //.btn.logout {background-color:transparent;color:red;}
 
   .btn + .btn {
     margin-top: 1em;
@@ -330,3 +355,83 @@ a.btn {
            __/ |                   __/ |           | |    
           |___/                   |___/            |_|    
 */
+
+[data-route="/login"],
+[data-route="/signup"] {
+  .btn {
+    background-color: #ffffff;
+  }
+
+  .popin__one h1 {
+    margin-top: 0;
+  }
+
+  p small {
+    color: gray;
+  }
+
+  p small + .btn {
+    margin-top: 1em;
+  }
+}
+
+//    _____           _____ _    _ ____   ____          _____  _____
+//   |  __ \   /\    / ____| |  | |  _ \ / __ \   /\   |  __ \|  __ \
+//   | |  | | /  \  | (___ | |__| | |_) | |  | | /  \  | |__) | |  | |
+//   | |  | |/ /\ \  \___ \|  __  |  _ <| |  | |/ /\ \ |  _  /| |  | |
+//   | |__| / ____ \ ____) | |  | | |_) | |__| / ____ \| | \ \| |__| |
+//   |_____/_/    \_\_____/|_|  |_|____/ \____/_/    \_\_|  \_\_____/
+//
+//
+
+.dashboard {
+}
+
+/*
+//    _  _______ _____ 
+//   | |/ /  __ \_   _|
+//   | ' /| |__) || |  
+//   |  < |  ___/ | |  
+//   | . \| |    _| |_ 
+//   |_|\_\_|   |_____|
+//                     
+//                      
+*/
+.Kpi1 {
+  border: black 1px solid;
+  margin-top: none;
+  background-color: #6fcf97;
+  width: auto;
+  padding: 20px 90px;
+}
+
+.Kpi2 {
+  border: black 1px solid;
+  margin-top: 10px;
+  padding: auto;
+}
+
+.Kpi3 {
+  border: grayscale($color: #e8d5d5) 1px solid;
+  border-radius: 5px;
+  margin-top: 100px;
+  display: block;
+  background-color: white;
+  padding: 20px 50px;
+  font-size: 20px;
+}
+//     _____          _____  _____   _____       _____   ____  _   _  _____ 
+//    / ____|   /\   |  __ \|  __ \ / ____|     |  __ \ / __ \| \ | |/ ____|
+//   | |       /  \  | |__) | |  | | (___ ______| |  | | |  | |  \| | (___  
+//   | |      / /\ \ |  _  /| |  | |\___ \______| |  | | |  | | . ` |\___ \ 
+//   | |____ / ____ \| | \ \| |__| |____) |     | |__| | |__| | |\  |____) |
+//    \_____/_/    \_\_|  \_\_____/|_____/      |_____/ \____/|_| \_|_____/ 
+//                                                                          
+//
+.cardClosed{
+  
+}
+.cardOpen{
+
+}
+

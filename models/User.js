@@ -10,6 +10,7 @@ const userSchema = new Schema(
     password: String,
     phone: Number,
     siret: Number, //uniquement sociétés
+    donationsArray:[{ type: Schema.Types.ObjectId, ref: "Donation" }],
     // address: {
     //   street: String,
     //   zipCode: Number,

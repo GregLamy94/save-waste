@@ -13,10 +13,13 @@ import Navbar from "./components/navigation/Navbar";
 import MenuBar from "./components/navigation/MenuBar";
 import DonationForm from "./components/DonationForm";
 import authService from "./components/auth/auth-service.js";
+import Dashboard from "./components/dashboard/Dashboard";
 
 class App extends Component {
   state = {
-    user: {}
+    user: {},
+    terminatedDons: [],
+    pendingDons: []
   };
 
   fetchUser = () => {
@@ -120,6 +123,22 @@ class App extends Component {
                   )}
                 />
 
+                <Route
+                  exact
+                  path="/dashboard"
+                  render={props => (
+                    <Dashboard
+                      clientType={this.state.user.clientType}
+                      history={props.history}
+                      donsonGoing={this.state.pendingDons.length}
+                      donsDone={this.state.terminatedDons.length}
+                      amount={this.state.terminatedDons.length * 7}
+                      nbmealsGiven={this.state.terminatedDons.length * 5}
+                      emissionsCO2={this.state.terminatedDons.length * 20}
+                    />
+                  )}
+                />
+
                 {/* last route, ie: 404 */}
                 <Route render={() => <h1>Not Found</h1>} />
               </Switch>
@@ -127,6 +146,8 @@ class App extends Component {
           )}
         />
         {this.state.user._id ? <MenuBar user={this.state.user} /> : ""}
+        {/* cette condition ne foncitonne pas il faut la réparer et enlever le deuxieme menu */}
+        <MenuBar user={this.state.user} />
       </div>
     );
   }
