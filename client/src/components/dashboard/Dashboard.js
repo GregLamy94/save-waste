@@ -1,15 +1,14 @@
 import React from "react";
-import Kpi from "./Kpi.js";
+
+import KpiTop from "./KpiTop.js";
+import KpiBottom from "./KpiBottom.js";
 import MenuBar from "../navigation/MenuBar.js";
+import CarddonBooked from "../dons/Card_booked.js";
+import CarddonAvailable from "../dons/Card_available.js";
+
 import donationServices from "../dons/donationServices";
 
 //import { Link } from "react-router-dom";
-
-// donsonGoing={this.state.pendingDons.length}
-//                       donsDone={this.state.terminatedDons.length}
-//
-//                       nbmealsGiven={this.state.terminatedDons.length * 5}
-//                       emissionsCO2={this.state.terminatedDons.length * 20}
 
 class Dashboard extends React.Component {
   state = {
@@ -39,7 +38,7 @@ class Dashboard extends React.Component {
   };
 
   componentDidMount = () => {
-    console.log("seraching donations");
+    console.log("searching donations");
     if (this.props.user.clientType === "restaurant") {
       this.fetchDonationsRestaurant();
     } else {
@@ -52,7 +51,7 @@ class Dashboard extends React.Component {
     const donsDone = this.state.donations.filter(
       don => don.status === "pickedUp"
     );
-    const donsonGoing = this.state.donations.filter(
+    const donsOnGoing = this.state.donations.filter(
       don => don.status !== "pickedUp"
     );
     const amount = 7 * donsDone.length;
@@ -61,12 +60,20 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <Kpi
-          amount={amount}
+        <KpiTop amount={amount} donsOnGoing={donsOnGoing} />
+
+        {donsDone.map(don => (
+          <CarddonBooked key={don._id} {...don} />
+        ))}
+
+        {donsOnGoing.map(don => (
+          <CarddonAvailable key={don._id} {...don} />
+        ))}
+
+        <KpiBottom
           donsDone={donsDone}
           nbmealsGiven={nbmealsGiven}
           emissionsCO2={emissionsCO2}
-          donsonGoing={donsonGoing}
         />
         <MenuBar />
       </div>

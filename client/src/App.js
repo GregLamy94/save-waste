@@ -106,7 +106,7 @@ class App extends Component {
                   exact
                   path="/new-donation"
                   render={props => {
-                    if (this.state.user === "restaurant") {
+                    if (this.state.user.clientType === "restaurant") {
                       return (
                         (this.state.user.address === "" ||
                           this.state.user.address) && (
@@ -133,9 +133,11 @@ class App extends Component {
                 <Route
                   exact
                   path="/dashboard"
-                  render={props => (
-                    <Dashboard user={this.state.user} {...props} />
-                  )}
+                  render={props =>
+                    this.state.user._id && (
+                      <Dashboard user={this.state.user} {...props} />
+                    )
+                  }
                 />
 
                 {/* last route, ie: 404 */}
@@ -144,9 +146,7 @@ class App extends Component {
             </div>
           )}
         />
-        {this.state.user._id ? <MenuBar user={this.state.user} /> : ""}
-        {/* cette condition ne foncitonne pas il faut la réparer et enlever le deuxieme menu */}
-        <MenuBar user={this.state.user} />
+        {this.state.user._id && <MenuBar user={this.state.user} />}
       </div>
     );
   }

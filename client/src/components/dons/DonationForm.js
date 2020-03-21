@@ -76,8 +76,6 @@ class DonationForm extends React.Component {
             newDonationBox.splice(index, 1);
             setFieldValue("donationBox", newDonationBox);
           };
-          console.log("values", values);
-          console.log("values", values);
 
           return (
             <Form className="form donation">
