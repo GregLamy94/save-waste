@@ -23,17 +23,31 @@ class CarddonAvailable extends React.Component {
                 <button onClick={this.toggleCard}><img src="icon_fleche_open.svg" alt="Logo chevron open "/>{this.state.isOpen}</button>
                 </div>
                 <div>
-                <p>Product type name<img src="" alt="Logo productType" /></p>
-                <p>Poids</p><p>{/*poids*/}</p>
-                <p>Date de peremption</p><p>{/*{date jours et mois}*/}</p>  
+                {this.props.donationBox.map(unitDon => (
+              <div>
+                <p>
+                  {unitDon.productName}
+                  <img src="" alt="Logo productType" />
+                </p>
+                <p>
+                  Type:
+                  {unitDon.productType}
+                  <img src="" alt="Logo productType" />
+                </p>
+                <p>Poids</p>
+                <p>
+                  {unitDon.quantity.value} {" " + unitDon.quantity.qtyType}
+                </p>
+                <p>Date de peremption</p>
+                <p>{unitDon.expirationDate}</p>
+              </div>
+            ))}
                 </div>
                 <button>Modifier</button>{/*Renvoi au formulaire de don */}
-
-                </div>
-            )}
-        
-        </div>
-      )
-    }
+          </div>
+        )}
+      </div>
+    );
   }
-  export default CarddonAvailable;  
+}
+export default CarddonAvailable;
