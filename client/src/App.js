@@ -20,9 +20,14 @@ class App extends Component {
     user: {},
     terminatedDons: [],
     pendingDons: [],
-    listDons: []
+    listDons: [],
+    currentPageName: "SaveWaste"
   };
 
+  getCurrentPageName = currentPageName => {
+    this.setState({ currentPageName });
+  };
+  
   fetchUser = () => {
     if (!this.state.user._id) {
       authService
@@ -46,7 +51,10 @@ class App extends Component {
     console.log(this.state.user);
     return (
       <div className="App">
-        <Navbar user={this.state.user} />
+        <Navbar
+          user={this.state.user}
+          currentPageName={this.state.currentPageName}
+        />
         <Route
           render={props => (
             <div className="App" data-route={props.location.pathname}>
@@ -131,6 +139,7 @@ class App extends Component {
                   path="/dashboard"
                   render={props => (
                     <Dashboard
+                      getCurrentPageName={this.getCurrentPageName}
                       clientType={this.state.user.clientType}
                       history={props.history}
                       donsonGoing={this.state.pendingDons.length}

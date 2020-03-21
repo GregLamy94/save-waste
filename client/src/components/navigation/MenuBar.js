@@ -28,6 +28,10 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     margin: "0 auto",
     backgroundColor: "#F7DC00"
+  },
+  noPadding: {
+    paddingLeft: 0,
+    paddingRight: 0
   }
 }));
 
@@ -44,7 +48,7 @@ function MenuBar() {
           className={classes.appBar}
           classes={{ root: classes.root }}
         >
-          <Toolbar>
+          <Toolbar className={classes.noPadding}>
             <Link to="/new-donation">
               <Fab
                 color="secondary"
@@ -56,27 +60,27 @@ function MenuBar() {
             </Link>
 
             <div className="menu">
-            <div className="iconMenu">
-              <Link to="/dashboard" className="buttons">
-                <img src="icon_dash.svg" alt="to dashboard" />{" "}
-              </Link>
+              <div className="iconMenu">
+                <Link to="/dashboard" className="buttons">
+                  <img src="icon_dash.svg" alt="to dashboard" />{" "}
+                </Link>
+              </div>
+              <div className="iconMenu">
+                <Link to="/dashboard" className={classes.buttons}>
+                  <img src="icon_historic.svg" alt="to historic" />{" "}
+                </Link>
+              </div>
+              <div className="iconMenu">
+                <Link to="/dashboard" className={classes.buttons}>
+                  <img src="icon_profil.svg" alt="to profil" />{" "}
+                </Link>
+              </div>
+              <div className="iconMenu">
+                <Link to="/dashboard" className={classes.buttons}>
+                  <img src="icon_menu.svg" alt="to menu" />{" "}
+                </Link>
+              </div>
             </div>
-            <div className="iconMenu">
-              <Link to="/dashboard" className={classes.buttons}>
-                <img src="icon_historic.svg" alt="to historic" />{" "}
-              </Link>
-            </div>
-            <div className="iconMenu">
-              <Link to="/dashboard" className={classes.buttons}>
-                <img src="icon_profil.svg" alt="to profil" />{" "}
-              </Link>
-            </div>
-            <div className="iconMenu">
-              <Link to="/dashboard" className={classes.buttons}>
-                <img src="icon_menu.svg" alt="to menu" />{" "}
-              </Link>
-            </div>
-          </div>
           </Toolbar>
         </AppBar>
       </div>

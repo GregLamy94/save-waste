@@ -6,7 +6,12 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  color:#5E6488;
+  color: #5E6488;
+  background: linear-gradient(
+    rgba(111, 207, 151, 1) 0%,
+    rgba(111, 207, 151, 1) 45%,
+    rgba(229, 229, 229, 1) 45%
+  );
 }
 
 input,
@@ -120,15 +125,22 @@ h1 {
   align-items: center;
   padding: 0.3em 1em;
 
+  h1{
+    font-size:22px;
+    color:#5E6488;
+    font-weight: 500;
+  }
 
   img {
-    width: 3.8em;
+    width: 2.7em;
+    margin: 1em;
   }
 }
 
 .menu {
   width: 100%;
   height: 8vh;
+  padding-top: 5px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -323,9 +335,9 @@ a.btn {
     font-size: 150%;
   }
 
-// [data-route="/profile"],
-// [data-route="/profile/edit"] {
-//   //.btn.logout {background-color:transparent;color:red;}
+  // [data-route="/profile"],
+  // [data-route="/profile/edit"] {
+  //   //.btn.logout {background-color:transparent;color:red;}
 
   .btn + .btn {
     margin-top: 1em;
@@ -397,17 +409,37 @@ a.btn {
 //                      
 */
 .Kpi1 {
-  border: black 1px solid;
-  margin-top: none;
-  background-color: #6fcf97;
   width: auto;
-  padding: 20px 90px;
+  padding: 0px 90px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+  .bigKPI {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 0;
+  }
+  .cashSave {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0;
+    margin-left: 0.1em;
+  }
 }
 
 .Kpi2 {
-  border: black 1px solid;
-  margin-top: 10px;
-  padding: auto;
+  width: 180px;
+  border-radius: 4px;
+  margin: auto;
+  display: block;
+  background-color: #e6e6e6;
+  font-size: 14px;
+  font-family: "Open Sans";
+  text-align: center;
+  padding: 0.3em;
+  opacity: 0.8;
+  font-weight: 600;
+  margin-top:10px;
 }
 
 .Kpi3 {
@@ -418,28 +450,39 @@ a.btn {
   background-color: white;
   padding: 3px 40px;
   font-size: 14px;
-  font-family:'Open Sans';
-  h2{
+  font-family: "Open Sans";
+  h2 {
     text-align: center;
     font-weight: 600;
   }
-  img{
+  img {
     padding-right: 10px;
   }
 }
 
-//     _____          _____  _____   _____       _____   ____  _   _  _____ 
+//     _____          _____  _____   _____       _____   ____  _   _  _____
 //    / ____|   /\   |  __ \|  __ \ / ____|     |  __ \ / __ \| \ | |/ ____|
-//   | |       /  \  | |__) | |  | | (___ ______| |  | | |  | |  \| | (___  
-//   | |      / /\ \ |  _  /| |  | |\___ \______| |  | | |  | | . ` |\___ \ 
+//   | |       /  \  | |__) | |  | | (___ ______| |  | | |  | |  \| | (___
+//   | |      / /\ \ |  _  /| |  | |\___ \______| |  | | |  | | . ` |\___ \
 //   | |____ / ____ \| | \ \| |__| |____) |     | |__| | |__| | |\  |____) |
-//    \_____/_/    \_\_|  \_\_____/|_____/      |_____/ \____/|_| \_|_____/ 
-//                                                                          
+//    \_____/_/    \_\_|  \_\_____/|_____/      |_____/ \____/|_| \_|_____/
 //
-.cardClosed{
-  
+//
+.card_dons {
+  border-radius: 8px;
+  margin-top: 100px;
+  margin: 15px;
+  display: block;
+  background-color: white;
+  padding: 3px 40px;
+  font-size: 14px;
+  font-family: "Open Sans";
+  img {
+    padding-right: 10px;
+  }
 }
-.cardOpen{
 
+.cardClosed {
 }
-
+.cardOpen {
+}

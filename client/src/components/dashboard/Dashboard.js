@@ -5,6 +5,9 @@ import MenuBar from "../navigation/MenuBar.js";
 //import { Link } from "react-router-dom";
 
 class Dashboard extends React.Component {
+  componentDidMount(){
+    this.props.getCurrentPageName("Tableau de bord");
+  }
   render(){
     return(
       <div className="dashboard">
