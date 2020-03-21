@@ -11,16 +11,15 @@ import ProfileEdit from "./components/auth/ProfileEdit.js";
 import Address from "./components/auth/Address.js";
 import Navbar from "./components/navigation/Navbar";
 import MenuBar from "./components/navigation/MenuBar";
-import DonationForm from "./components/DonationForm";
+import DonationForm from "./components/dons/DonationForm";
+import ListDons from "./components/dons/ListDons.js";
 import authService from "./components/auth/auth-service.js";
 import Dashboard from "./components/dashboard/Dashboard";
 
 class App extends Component {
   state = {
     user: {},
-    terminatedDons: [],
-    pendingDons: [],
-    listDons: []
+    listDonsRestaurant: []
   };
 
   fetchUser = () => {
@@ -106,13 +105,18 @@ class App extends Component {
                 <Route
                   exact
                   path="/new-donation"
-                  render={
-                    props => <DonationForm user={this.state.user} {...props} />
-
-                    /*this.state.user.address && (
-                      <DonationForm user={this.state.user} {...props} />
-                    )*/
-                  }
+                  render={props => {
+                    if (this.state.user === "restaurant") {
+                      return (
+                        (this.state.user.address === "" ||
+                          this.state.user.address) && (
+                          <DonationForm user={this.state.user} {...props} />
+                        )
+                      );
+                    } else {
+                      return <ListDons user={this.state.user} {...props} />;
+                    }
+                  }}
                 />
                 <Route
                   exact
@@ -130,15 +134,7 @@ class App extends Component {
                   exact
                   path="/dashboard"
                   render={props => (
-                    <Dashboard
-                      clientType={this.state.user.clientType}
-                      history={props.history}
-                      donsonGoing={this.state.pendingDons.length}
-                      donsDone={this.state.terminatedDons.length}
-                      amount={this.state.terminatedDons.length * 7}
-                      nbmealsGiven={this.state.terminatedDons.length * 5}
-                      emissionsCO2={this.state.terminatedDons.length * 20}
-                    />
+                    <Dashboard user={this.state.user} {...props} />
                   )}
                 />
 

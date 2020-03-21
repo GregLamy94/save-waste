@@ -42,6 +42,7 @@ router.post("/users", (req, res, next) => {
   const companyName = req.body.companyName;
   const password = req.body.password;
   const clientType = req.body.clientType;
+  const address = req.body.address || "";
   console.log(req.body);
 
   if (!companyName || !password || !email || !clientType) {
@@ -62,7 +63,8 @@ router.post("/users", (req, res, next) => {
       email,
       companyName,
       password: hashPass,
-      clientType
+      clientType,
+      address
     });
 
     newUser

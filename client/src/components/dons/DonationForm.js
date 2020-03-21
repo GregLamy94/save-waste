@@ -3,7 +3,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import Address from "./auth/Address";
+import Address from "../auth/Address";
 import UnitDonation from "./UnitDonation";
 import donationServices from "./donationServices";
 

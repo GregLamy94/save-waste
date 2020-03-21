@@ -21,5 +21,21 @@ export default {
     return this.service
       .get("/donations/available")
       .then(response => response.data);
+  },
+
+  getDonationsGiver() {
+    console.log("function DonationServices caleled)");
+    return this.service.get("/donations/giver").then(response => {
+      console.log("donations", response.data);
+      return response.data;
+    });
+  },
+
+  getDonationsAssociation() {
+    console.log("function DonationServices called)");
+    return this.service.get("/donations/taker").then(response => {
+      console.log("donations", response.data);
+      return response.data;
+    });
   }
 };
