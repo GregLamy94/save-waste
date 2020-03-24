@@ -21,16 +21,16 @@ export default class extends React.Component {
     });
   };
 
-  updateAddress = address => {
-    this.setState({
-      user: {
-        ...this.state.user
-      }
-    });
-  };
+  // updateAddress = address => {
+  //   this.setState({
+  //     user: {
+  //       ...this.state.user
+  //     }
+  //   });
+  // };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <>
         {!this.props.user._id ? (
@@ -45,6 +45,7 @@ export default class extends React.Component {
               phone: this.props.user.phone || "",
               siret: this.props.user.siret || "", //uniquement sociétés
               address: this.props.user.address || "",
+              GeoLoc: this.props.user.GeoLoc || {},
               imageUrl: this.props.user.imageUrl || "",
               error: ""
             }}
@@ -72,6 +73,7 @@ export default class extends React.Component {
                 siret,
                 contactName,
                 address,
+                GeoLoc,
                 phone
               } = values;
               authService
@@ -81,6 +83,7 @@ export default class extends React.Component {
                   email,
                   contactName,
                   address,
+                  GeoLoc,
                   siret,
                   phone
                 })
@@ -91,9 +94,11 @@ export default class extends React.Component {
             }}
           >
             {({ values, setFieldValue }) => {
-              const handleAddress = address => {
+              const handleAddress = (address, GeoLoc) => {
                 setFieldValue("address", address);
+                setFieldValue("GeoLoc", GeoLoc);
               };
+              console.log("values", values);
               return (
                 <Form className="form">
                   <img

@@ -31,7 +31,11 @@ const donationSchema = new Schema(
       default: "pending"
     },
     taker: { type: Schema.Types.ObjectId, ref: "User" },
-    location: ""
+    location: "",
+    GeoLoc: {
+      lat: Number,
+      lng: Number
+    }
     // {
     //   //is by default giver's registered address
     //   street: String,

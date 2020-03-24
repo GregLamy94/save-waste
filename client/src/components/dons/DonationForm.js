@@ -24,7 +24,8 @@ class DonationForm extends React.Component {
               expirationDate: new Date(Date.now())
             }
           ],
-          location: this.props.user.address || ""
+          location: this.props.user.address || "",
+          GeoLoc: this.props.user.GeoLoc || {}
         }}
         // validationSchema={Yup.object({
         //   productName: Yup.string()
@@ -42,10 +43,10 @@ class DonationForm extends React.Component {
         //   )
         // })}
         onSubmit={(values, { setSubmitting }) => {
-          const { donationBox, location } = values;
+          const { donationBox, location, GeoLoc } = values;
           console.log("values", values);
           donationServices
-            .createDonation(donationBox, location)
+            .createDonation(donationBox, location, GeoLoc)
             .then(response => {
               this.props.history.push(`/dashboard`);
             })
@@ -67,8 +68,9 @@ class DonationForm extends React.Component {
               }
             ]);
 
-          const handleAddress = address => {
+          const handleAddress = (address, GeoLoc) => {
             setFieldValue("location", address);
+            setFieldValue("GeoLoc", GeoLoc);
           };
 
           const deleteUnitDon = index => {

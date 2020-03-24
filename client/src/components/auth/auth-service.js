@@ -39,6 +39,7 @@ export default {
     email,
     contactName,
     address,
+    GeoLoc,
     siret,
     imageUrl,
     phone
@@ -50,6 +51,7 @@ export default {
         email,
         contactName,
         address,
+        GeoLoc,
         siret,
         imageUrl,
         phone

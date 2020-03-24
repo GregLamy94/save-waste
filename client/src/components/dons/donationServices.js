@@ -8,11 +8,12 @@ export default {
     withCredentials: true
   }),
 
-  createDonation(donationBox, location) {
+  createDonation(donationBox, location, GeoLoc) {
     return this.service
       .post("/donations/new-donation", {
         donationBox,
-        location
+        location,
+        GeoLoc
       })
       .then(response => response.data);
   },

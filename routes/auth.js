@@ -43,6 +43,7 @@ router.post("/users", (req, res, next) => {
   const password = req.body.password;
   const clientType = req.body.clientType;
   const address = req.body.address || "";
+  const GeoLoc = req.body.GeoLoc || { lat: null, lng: null };
   console.log(req.body);
 
   if (!companyName || !password || !email || !clientType) {
@@ -64,7 +65,8 @@ router.post("/users", (req, res, next) => {
       companyName,
       password: hashPass,
       clientType,
-      address
+      address,
+      GeoLoc
     });
 
     newUser

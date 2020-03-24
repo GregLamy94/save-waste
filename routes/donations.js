@@ -19,6 +19,7 @@ router.post("/new-donation", (req, res, next) => {
   const giver = req.user._id;
   const status = "pending";
   const location = req.body.location || req.user.address || "";
+  const GeoLoc = req.body.GeoLoc || req.user.GeoLoc || {};
   //NE FONCTIONNE PAS
   // const boxExpirationDate = new Date(
   //   Math.max(donationBox.map(donation => donation.expirationDate))
@@ -29,7 +30,8 @@ router.post("/new-donation", (req, res, next) => {
     // boxExpirationDate,
     giver,
     status,
-    location
+    location,
+    GeoLoc
   });
   console.log("newDonation", newDonation);
   newDonation
