@@ -14,7 +14,7 @@ import MenuBar from "./components/navigation/MenuBar";
 import DonationForm from "./components/dons/DonationForm";
 import ListDons from "./components/dons/ListDons.js";
 import authService from "./components/auth/auth-service.js";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard.js";
 
 class App extends Component {
   state = {

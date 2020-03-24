@@ -58,6 +58,7 @@ class Dashboard extends React.Component {
 
   render() {
     //calculs qui sont identiques Restaurant/Association non ?
+    const isResto = this.user.clientType === "restaurant"
     const donsDone = this.state.donations.filter(
       don => don.status === "pickedUp"
     );
@@ -85,7 +86,7 @@ class Dashboard extends React.Component {
           nbmealsGiven={nbmealsGiven}
           emissionsCO2={emissionsCO2}
         />
-        <MenuBar />
+        <MenuBar isResto={isResto} />
       </div>
     );
   }
