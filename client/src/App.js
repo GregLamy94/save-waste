@@ -145,9 +145,7 @@ class App extends Component {
             </div>
           )}
         />
-        {this.state.user._id ? <MenuBar user={this.state.user} /> : ""}
-        {/* cette condition ne foncitonne pas il faut la réparer et enlever le deuxieme menu */}
-        <MenuBar user={this.state.user} />
+        {this.state.user._id && <MenuBar user={this.state.user} />}
       </div>
     );
   }
