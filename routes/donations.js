@@ -18,7 +18,7 @@ router.post("/new-donation", (req, res, next) => {
   const donationBox = req.body.donationBox; //Array of donation items
   const giver = req.user._id;
   const status = "pending";
-  const location = req.body.location || req.user.address || {};
+  const location = req.body.location || req.user.address || "";
   //NE FONCTIONNE PAS
   // const boxExpirationDate = new Date(
   //   Math.max(donationBox.map(donation => donation.expirationDate))
@@ -31,7 +31,7 @@ router.post("/new-donation", (req, res, next) => {
     status,
     location
   });
-  console.log(newDonation);
+  console.log("newDonation", newDonation);
   newDonation
     .save()
     .then(donation => {
@@ -45,7 +45,49 @@ router.post("/new-donation", (req, res, next) => {
     });
 });
 
-//Récupère les dons pending pour les associations
+//Récupération des dons d'un restaurant
+router.get("/giver", (req, res, next) => {
+  if (!req.user || !req.user.clientType === "restaurant") {
+    res.status(401).json({
+      message:
+        "Vous devez être un restaurant authentifié pour visioner vos dons"
+    });
+    return;
+  }
+
+  Donation.find({ giver: req.user._id })
+    .then(listDonations => {
+      res.status(201).json(listDonations);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ message: "Something went wrong during donations request" });
+    });
+});
+
+//Récupération des dons d'une association
+router.get("/taker", (req, res, next) => {
+  if (!req.user || !req.user.clientType === "association") {
+    res.status(401).json({
+      message:
+        "Vous devez être une association authentifiée pour visioner vos dons"
+    });
+    return;
+  }
+
+  Donation.find({ taker: req.user._id })
+    .then(listDonations => {
+      res.status(201).json(listDonations);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ message: "Something went wrong during donations request" });
+    });
+});
+
+//Récupère tous les dons pending pour les associations
 router.get("/available", (req, res, next) => {
   console.log(req.user);
   if (!req.user || !req.user.clientType === "association") {

@@ -13,27 +13,41 @@ class CarddonAvailable extends React.Component {
             {!this.state.isOpen && (
                 <div className="cardClosed">
                 <p><img src="" alt="Logo panier" />Panier disponible</p>
-                <button onClick={this.toggleCard}><img src="" alt="Logo chevron closed"/>Open</button>
+                <button onClick={this.toggleCard}><img src="icon_fleche_closed.svg" alt="Logo chevron closed"/></button>
                 </div>
             )}
             {this.state.isOpen && (
                 <div className ="cardOpen">
                 <div>
                 <p><img src="" alt="Logo panier" />Panier disponible</p>
-                <button onClick={this.toggleCard}><img src="" alt="Logo chevron open "/>{this.state.isOpen}Close</button>
+                <button onClick={this.toggleCard}><img src="icon_fleche_open.svg" alt="Logo chevron open "/>{this.state.isOpen}</button>
                 </div>
                 <div>
-                <p>Product type name<img src="" alt="Logo productType" /></p>
-                <p>Poids</p><p>{/*poids*/}</p>
-                <p>Date de peremption</p><p>{/*{date jours et mois}*/}</p>  
+                {this.props.donationBox.map(unitDon => (
+              <div>
+                <p>
+                  {unitDon.productName}
+                  <img src="" alt="Logo productType" />
+                </p>
+                <p>
+                  Type:
+                  {unitDon.productType}
+                  <img src="" alt="Logo productType" />
+                </p>
+                <p>Poids</p>
+                <p>
+                  {unitDon.quantity.value} {" " + unitDon.quantity.qtyType}
+                </p>
+                <p>Date de peremption</p>
+                <p>{unitDon.expirationDate}</p>
+              </div>
+            ))}
                 </div>
                 <button>Modifier</button>{/*Renvoi au formulaire de don */}
-
-                </div>
-            )}
-        
-        </div>
-      )
-    }
+          </div>
+        )}
+      </div>
+    );
   }
-  export default CarddonAvailable;  
+}
+export default CarddonAvailable;

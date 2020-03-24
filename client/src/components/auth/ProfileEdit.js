@@ -72,7 +72,6 @@ export default class extends React.Component {
                 siret,
                 contactName,
                 address,
-                imageUrl,
                 phone
               } = values;
               authService
@@ -83,7 +82,6 @@ export default class extends React.Component {
                   contactName,
                   address,
                   siret,
-                  imageUrl,
                   phone
                 })
                 .then(response => {

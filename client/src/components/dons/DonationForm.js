@@ -3,7 +3,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-import Address from "./auth/Address";
+import Address from "../auth/Address";
 import UnitDonation from "./UnitDonation";
 import donationServices from "./donationServices";
 
@@ -47,7 +47,7 @@ class DonationForm extends React.Component {
           donationServices
             .createDonation(donationBox, location)
             .then(response => {
-              this.props.history.push(`/donations/${response._id}`);
+              this.props.history.push(`/dashboard`);
             })
             .catch(err => console.log(err));
         }}
@@ -76,13 +76,11 @@ class DonationForm extends React.Component {
             newDonationBox.splice(index, 1);
             setFieldValue("donationBox", newDonationBox);
           };
-          console.log("values", values);
-          console.log("values", values);
 
           return (
             <Form className="form donation">
               <h1>Faites un don</h1>
-              <pre>{JSON.stringify(values, null, 4)}</pre>
+              {/* <pre>{JSON.stringify(values, null, 4)}</pre> */}
 
               {values.donationBox.map((donation, index) => {
                 return (

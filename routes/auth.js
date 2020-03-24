@@ -42,6 +42,7 @@ router.post("/users", (req, res, next) => {
   const companyName = req.body.companyName;
   const password = req.body.password;
   const clientType = req.body.clientType;
+  const address = req.body.address || "";
   console.log(req.body);
 
   if (!companyName || !password || !email || !clientType) {
@@ -62,7 +63,8 @@ router.post("/users", (req, res, next) => {
       email,
       companyName,
       password: hashPass,
-      clientType
+      clientType,
+      address
     });
 
     newUser
@@ -152,6 +154,7 @@ router.post("/users/upload", uploader.single("image"), (req, res, next) => {
 
   // Updating user's `image`
   req.user.imageUrl = req.file.secure_url;
+  console.log("hello", req.user.imageUrl);
 
   // Validating user before saving
   req.user.validate(function(error) {
@@ -163,6 +166,7 @@ router.post("/users/upload", uploader.single("image"), (req, res, next) => {
     // Validation ok, let save it
     req.user.save(function(err) {
       if (err) {
+        console.log("user edited", req.user);
         res.status(500).json({ message: "Error while saving user into DB." });
         return;
       }

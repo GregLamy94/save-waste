@@ -9,11 +9,12 @@ class Kpi extends React.Component{
             <div>
         
                 <div className="Kpi1">
-                <h1>Tableau de bord</h1>
-                <p>{this.props.amount}€</p>
+                <span>{this.props.amount}</span>
+                <span className="cashSave">€</span>
+                <div className="bigKPI"> d'impôt économisés</div>
                 </div>
                 <div className="Kpi2">
-                <p><img src="" alt="Logo" />{this.props.donsonGoing}Dons en cours</p>
+                <span> ⬇️{this.props.donsonGoing} dons en cours 😍</span>
                 </div>
 
                 <CarddonBooked/>
@@ -21,9 +22,9 @@ class Kpi extends React.Component{
                 
                 <div className= "Kpi3">
                 <h2>Vos données</h2>
-                <p><img src="" alt="Logo" />{this.props.donsDone}Dons réalisés</p>
-                <p><img src="" alt="Logo" />{this.props.nbmealsGiven}Personnes bénéficiées</p>
-                <p><img src="" alt="Logo" />{this.props.emissionsCO2}C02 Emissions CO2 évitées</p>
+                <p><img src="icon_bullet1.svg" alt="Logo" />{this.props.donsDone}Dons réalisés</p>
+                <p><img src="icon_bullet2.svg" alt="Logo" />{this.props.nbmealsGiven}Personnes bénéficiées</p>
+                <p><img src="icon_bullet3.svg" alt="Logo" />{this.props.emissionsCO2}C02 Emissions CO2 évitées</p>
                 </div> 
             </div>
         )
