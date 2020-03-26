@@ -35,10 +35,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function MenuBar() {
-
+function MenuBar(props) {
   const classes = useStyles();
-  const url = this.props.isResto ? "/new-donation" : "/donations/available";
+  const url = props.user && props.user.clientType==="restaurant" ? "/new-donation" : "/donations/available";
+  console.log(props);
+  console.log("this is url ", url);
 
   return (
     <React.Fragment>
@@ -50,7 +51,7 @@ function MenuBar() {
           className={classes.appBar}
           classes={{ root: classes.root }}
         >
-          <Toolbar className={classes.noPadding}>
+          <Toolbar className="buttons">
             <Link to={url}>
               <Fab
                 color="secondary"

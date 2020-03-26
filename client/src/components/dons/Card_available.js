@@ -12,7 +12,7 @@ class CarddonAvailable extends React.Component {
         <div className="card_dons">
             {!this.state.isOpen && (
                 <div className="cardClosed">
-                <p><img src="" alt="Logo panier" />Panier disponible</p>
+                <p><img src="egg-basket.svg" alt="Logo panier" />Panier disponible</p>
                 <button onClick={this.toggleCard}><img src="icon_fleche_closed.svg" alt="Logo chevron closed"/></button>
                 </div>
             )}
