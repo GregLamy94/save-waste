@@ -7,11 +7,9 @@ body {
   justify-content: center;
   flex-direction: column;
   color: #5e6488;
-  background: linear-gradient(
-    rgba(111, 207, 151, 1) 0%,
-    rgba(111, 207, 151, 1) 45%,
-    rgba(229, 229, 229, 1) 45%
-  );
+  background: linear-gradient(rgba(111, 207, 151, 1) 0%,
+      rgba(111, 207, 151, 1) 45%,
+      rgba(229, 229, 229, 1) 45%);
 }
 
 input,
@@ -65,16 +63,20 @@ h1 {
     background-color: #f6f6f6;
     width: 80%;
   }
+
   .address {
     width: 80%;
+
     input {
       width: 100%;
     }
   }
+
   label,
   span {
     width: 80%;
   }
+
   .my-select {
     height: 30px;
     font-size: 0.8em;
@@ -101,16 +103,19 @@ h1 {
   span {
     display: block;
   }
+
   .btn {
     margin-top: 2em;
     width: 150px;
   }
+
   p {
     font-size: 12px;
     width: 80%;
     text-align: center;
   }
 }
+
 /*_   _             _                
  | \ | | __ ___   _| |__   __ _ _ __ 
  |  \| |/ _` \ \ / / '_ \ / _` | '__|
@@ -150,6 +155,7 @@ h1 {
     width: 3.8em;
   }
 }
+
 /*
   ____             __ _ _      
  |  _ \ _ __ ___  / _(_) | ___ 
@@ -163,6 +169,7 @@ h1 {
   h1 {
     margin-top: 0;
   }
+
   .editIcon {
     align-self: end;
     width: 2em;
@@ -181,6 +188,7 @@ h1 {
 .form.donation {
   padding: 0.6em;
   padding-bottom: 10vh;
+
   .plus {
     box-shadow: rgba(171, 195, 173, 0.67) 0px 0px 4px 3px;
     width: 28px;
@@ -206,6 +214,7 @@ h1 {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       input {
         width: 50%;
       }
@@ -217,12 +226,15 @@ h1 {
         border: 1px solid black;
       }
     }
+
     .quantity {
       display: flex;
       align-items: center;
+
       input {
         width: 20%;
       }
+
       .date {
         width: 60%;
         display: flex;
@@ -237,10 +249,12 @@ h1 {
       }
     }
   }
+
   .localisation {
     width: 100%;
   }
 }
+
 /*
                     _       
                    (_)      
@@ -331,7 +345,7 @@ a.btn {
     color: gray;
   }
 
-  p em + span {
+  p em+span {
     display: flex;
     font-size: 150%;
   }
@@ -340,7 +354,7 @@ a.btn {
   // [data-route="/profile/edit"] {
   //   //.btn.logout {background-color:transparent;color:red;}
 
-  .btn + .btn {
+  .btn+.btn {
     margin-top: 1em;
   }
 
@@ -382,7 +396,7 @@ a.btn {
     color: gray;
   }
 
-  p small + .btn {
+  p small+.btn {
     margin-top: 1em;
   }
 }
@@ -396,8 +410,7 @@ a.btn {
 //
 //
 
-.dashboard {
-}
+.dashboard {}
 
 /*
 //    _  _______ _____ 
@@ -415,11 +428,13 @@ a.btn {
   text-align: center;
   font-size: 40px;
   font-weight: 400;
+
   .bigKPI {
     font-size: 20px;
     font-weight: 300;
     padding: 0;
   }
+
   .cashSave {
     font-size: 20px;
     font-weight: 400;
@@ -452,10 +467,12 @@ a.btn {
   padding: 3px 40px;
   font-size: 14px;
   font-family: "Open Sans";
+
   h2 {
     text-align: center;
     font-weight: 600;
   }
+
   img {
     padding-right: 10px;
   }
@@ -473,17 +490,39 @@ a.btn {
   border-radius: 8px;
   margin-top: 100px;
   margin: 15px;
-  display: block;
   background-color: white;
-  padding: 3px 40px;
+  padding: 3px 20px;
   font-size: 14px;
   font-family: "Open Sans";
+  display: flex;
+
   img {
-    padding-right: 10px;
+    padding-right: 20px;
   }
 }
 
 .cardClosed {
+  width: 300px;
+
+  img {
+    padding-right: 10px;
+    margin-left: 5px;
+    height: 30px;
+  }
 }
+
+.toggleButton {
+
+  width: 30px;
+
+}
+
 .cardOpen {
+
+  img {
+    padding-right: 10px;
+    margin-left: 5px;
+    height: 30px;
+  }
+
 }
