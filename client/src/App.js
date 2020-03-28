@@ -15,7 +15,7 @@ import DonationForm from "./components/dons/DonationForm";
 import ListDons from "./components/dons/ListDons.js";
 import authService from "./components/auth/auth-service.js";
 import Dashboard from "./components/dashboard/Dashboard.js";
-import Historic from "./components/Historic.js";
+import Historic from "./components/auth/Historic.js";
 
 class App extends Component {
   state = {
