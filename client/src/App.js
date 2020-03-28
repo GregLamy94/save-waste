@@ -15,6 +15,7 @@ import DonationForm from "./components/dons/DonationForm";
 import ListDons from "./components/dons/ListDons.js";
 import authService from "./components/auth/auth-service.js";
 import Dashboard from "./components/dashboard/Dashboard.js";
+import Historic from "./components/Historic.js";
 
 class App extends Component {
   state = {
@@ -129,6 +130,19 @@ class App extends Component {
                     }
                   }}
                 />
+
+                <Route
+                  exact
+                  path="/available-donation"
+                  render={props => {
+                    if (this.state.user.clientType === "association") {
+                      return <ListDons user={this.state.user} {...props} />
+                    } else {
+                      return <ListDons user={this.state.user} {...props} />;
+                    }
+                  }}
+                />
+
                 <Route
                   exact
                   path="/address"
@@ -147,6 +161,15 @@ class App extends Component {
                   render={props =>
                     this.state.user._id && (
                       <Dashboard user={this.state.user} {...props} />
+                    )
+                  }
+                />
+                <Route
+                  exact
+                  path="/historic"
+                  render={props =>
+                    this.state.user._id && (
+                      <Historic user={this.state.user} {...props} />
                     )
                   }
                 />

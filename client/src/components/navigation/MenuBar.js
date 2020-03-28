@@ -37,7 +37,10 @@ const useStyles = makeStyles(theme => ({
 
 function MenuBar(props) {
   const classes = useStyles();
-  const url = props.user && props.user.clientType==="restaurant" ? "/new-donation" : "/donations/available";
+  const url =
+    props.user && props.user.clientType === "restaurant"
+      ? "/new-donation"
+      : "/available-donation";
   console.log(props);
   console.log("this is url ", url);
 
@@ -69,7 +72,7 @@ function MenuBar(props) {
                 </Link>
               </div>
               <div className="iconMenu">
-                <Link to="/dashboard" className={classes.buttons}>
+                <Link to="/historic" className={classes.buttons}>
                   <img src="icon_historic.svg" alt="to historic" />{" "}
                 </Link>
               </div>
@@ -78,8 +81,10 @@ function MenuBar(props) {
                   <img src="icon_profil.svg" alt="to profil" />{" "}
                 </Link>
               </div>
+              {/* TODO ajouter un menu ouvrant qui permet d'accéder à la deconnexion mais à d'autres 
+              éléments aussi... pour l'instant on deco directement avec une icone pas très parlante */}
               <div className="iconMenu">
-                <Link to="/dashboard" className={classes.buttons}>
+                <Link to="/logout" className={classes.buttons}>
                   <img src="icon_menu.svg" alt="to menu" />{" "}
                 </Link>
               </div>
