@@ -1,6 +1,5 @@
 import React from "react";
 
-import MenuBar from "../navigation/MenuBar.js";
 import donationServices from "../dons/donationServices";
 import CarddonAvailable from "./Card_available";
 
@@ -30,7 +29,6 @@ class ListDons extends React.Component {
         {this.state.donationsAvailable.map(don => (
           <CarddonAvailable key={don._id} {...don} />
         ))}
-        <MenuBar />
       </div>
     );
   }

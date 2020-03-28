@@ -21,6 +21,7 @@ export default {
   getDonationsAvailable() {
     return this.service
       .get("/donations/available")
+// WARNING PAS SUR DE CE QUE JE FAIS
       .then(response => response.data);
   },
 

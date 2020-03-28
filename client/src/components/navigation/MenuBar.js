@@ -27,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     margin: "0 auto",
-    backgroundColor: "#F7DC00"
+    backgroundColor: "#F7DC00",
+    color: "#FFFFFF"
   },
   noPadding: {
     paddingLeft: 0,
@@ -37,7 +38,10 @@ const useStyles = makeStyles(theme => ({
 
 function MenuBar(props) {
   const classes = useStyles();
-  const url = props.user && props.user.clientType==="restaurant" ? "/new-donation" : "/donations/available";
+  const url =
+    props.user && props.user.clientType === "restaurant"
+      ? "/new-donation"
+      : "/available-donation";
   console.log(props);
   console.log("this is url ", url);
 
@@ -53,11 +57,7 @@ function MenuBar(props) {
         >
           <Toolbar className="buttons">
             <Link to={url}>
-              <Fab
-                color="secondary"
-                aria-label="add"
-                className={classes.fabButton}
-              >
+              <Fab aria-label="add" className={classes.fabButton}>
                 <AddIcon />
               </Fab>
             </Link>
@@ -69,7 +69,7 @@ function MenuBar(props) {
                 </Link>
               </div>
               <div className="iconMenu">
-                <Link to="/dashboard" className={classes.buttons}>
+                <Link to="/historic" className={classes.buttons}>
                   <img src="icon_historic.svg" alt="to historic" />{" "}
                 </Link>
               </div>
@@ -78,8 +78,10 @@ function MenuBar(props) {
                   <img src="icon_profil.svg" alt="to profil" />{" "}
                 </Link>
               </div>
+              {/* TODO ajouter un menu ouvrant qui permet d'accéder à la deconnexion mais à d'autres 
+              éléments aussi... pour l'instant on deco directement avec une icone pas très parlante */}
               <div className="iconMenu">
-                <Link to="/dashboard" className={classes.buttons}>
+                <Link to="/logout" className={classes.buttons}>
                   <img src="icon_menu.svg" alt="to menu" />{" "}
                 </Link>
               </div>
