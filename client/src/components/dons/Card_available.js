@@ -38,41 +38,33 @@ class CarddonAvailable extends React.Component {
         )}
         {this.state.isOpen && (
           <div className="cardOpen">
-            <div>
-              <p>
+              <div className= "btn-open">
                 <img src="Gift-Box.png" alt="Logo panier" />
                 Panier disponible
-              </p>
+              <div className="toggleButton">
               <button onClick={this.toggleCard}>
                 <img src="icon_fleche_open.svg" alt="Logo chevron open " />
                 {this.state.isOpen}
               </button>
+              </div>
             </div>
             <div>
               {this.props.donationBox.map(unitDon => (
-                <div>
+                <div className = "cardInfo">  
                   <div>
-                    Type:
-                    {unitDon.productType}
+                    <div>Produit: {unitDon.productName}</div>
+                    <div className ="productType">Type: {unitDon.productType}
+                    <div>
                     <img src={foodTypes[unitDon.productType]} alt='food type'/>
-                    <img src={this.props.img_product} alt="Logo productType" />
-                  </div>
-                  <div>{unitDon.productName}</div>
-
-                  <div>
-                    <p>Poids</p>
-                    <p>
-                      {unitDon.quantity.value} {" " + unitDon.quantity.qtyType}
-                    </p>
-                  </div>
-                  <div>
-                    <p>Date de peremption</p>
-                    <p>{unitDon.expirationDate}</p>
+                    </div>
+                    </div>
+                    <div>Poids: {unitDon.quantity.value} {" " + unitDon.quantity.qtyType}</div>
+                    <div>Date de peremption: {unitDon.expirationDate}</div>
                   </div>
                 </div>
               ))}
             </div>
-            <button>Modifier</button>
+            <button class="btn">Modifier</button>
             {/*Renvoi au formulaire de don */}
           </div>
         )}
