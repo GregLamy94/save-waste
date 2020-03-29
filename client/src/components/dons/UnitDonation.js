@@ -1,13 +1,20 @@
 import React from "react";
 
 import { Field } from "formik";
-import * as Yup from "yup";
 
 class UnitDonation extends React.Component {
   render() {
     return (
       <>
-        <h2>Produit à donner </h2>
+        <div className="headUnitDon">
+          <h2>Produit à donner </h2>
+          <img
+            src="/delete.svg"
+            onClick={() => this.props.deleteUnitDon(this.props.index)}
+            style={{ cursor: "pointer" }}
+          />
+        </div>
+
         <div className="produit">
           <Field
             name={`donationBox.${this.props.index}.productName`}
@@ -28,24 +35,26 @@ class UnitDonation extends React.Component {
 
         <div className="quantity">
           <label>Quantité</label>
-          <Field
-            name={`donationBox.${this.props.index}.quantity.value`}
-            type="number"
-          ></Field>
-          <Field
-            name={`donationBox.${this.props.index}.quantity.qtyType`}
-            as="select"
-          >
-            <option value="kg">kg</option>
-            <option value="qty">items</option>
-          </Field>
-          <div className="date">
-            <label>Date d'expiration</label>
+          <div className="input-quantity">
             <Field
-              type="date"
-              name={`donationBox.${this.props.index}.expirationDate`}
+              name={`donationBox.${this.props.index}.quantity.value`}
+              type="number"
             ></Field>
+            <Field
+              name={`donationBox.${this.props.index}.quantity.qtyType`}
+              as="select"
+            >
+              <option value="kg">kg</option>
+              <option value="qty">items</option>
+            </Field>
           </div>
+        </div>
+        <div className="date">
+          <label>Date d'expiration</label>
+          <Field
+            type="date"
+            name={`donationBox.${this.props.index}.expirationDate`}
+          ></Field>
         </div>
       </>
     );

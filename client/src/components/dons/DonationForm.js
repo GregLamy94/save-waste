@@ -80,35 +80,39 @@ class DonationForm extends React.Component {
           };
 
           return (
-            <Form className="form donation">
-              <h1>Faites un don</h1>
-              {/* <pre>{JSON.stringify(values, null, 4)}</pre> */}
+            <>
+              <h1>Nouveau don</h1>
+              <Form className="form donation">
+                {/* <pre>{JSON.stringify(values, null, 4)}</pre> */}
+                <h2>Qu'est-ce que vous souhaitez donner? </h2>
+                {values.donationBox.map((donation, index) => {
+                  return (
+                    <div className="unitDon">
+                      <UnitDonation
+                        key={index}
+                        deleteUnitDon={deleteUnitDon}
+                        {...donation}
+                        index={index}
+                      />
+                    </div>
+                  );
+                })}
 
-              {values.donationBox.map((donation, index) => {
-                return (
-                  <div className="unitDon">
-                    <UnitDonation key={index} {...donation} index={index} />
-                    <img
-                      src="/delete.svg"
-                      onClick={() => deleteUnitDon(index)}
-                    />
-                  </div>
-                );
-              })}
-              <div className="plus" onClick={handleAddDon}>
-                +
-              </div>
+                <div className="localisation">
+                  <label htmlFor="location">Localisation du don</label>
+                  <Address
+                    pushAddress={handleAddress}
+                    address={this.props.user.address}
+                  ></Address>
+                </div>
 
-              <div className="localisation">
-                <label htmlFor="location">Localisation du don</label>
-                <Address
-                  pushAddress={handleAddress}
-                  address={this.props.user.address}
-                ></Address>
-              </div>
+                <div className="btn add-item" onClick={handleAddDon}>
+                  Ajouter un élément
+                </div>
 
-              <button className="btn">Submit</button>
-            </Form>
+                <button className="btn">Finaliser le don</button>
+              </Form>
+            </>
           );
         }}
       </Formik>

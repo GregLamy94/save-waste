@@ -70,7 +70,7 @@ class CarddonAvailable extends React.Component {
           <div className="cardOpen">
             <div className="btn-open">
               <img src="./Gift-Box.png" alt="Logo panier" />
-              <p>Panier disponible</p>
+              <p>{cardHeading[this.state.statusDon]}</p>
               <div className="toggleButton">
                 <img
                   onClick={this.toggleCard}

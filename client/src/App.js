@@ -136,7 +136,7 @@ class App extends Component {
                   path="/available-donation"
                   render={props => {
                     if (this.state.user.clientType === "association") {
-                      return <ListDons user={this.state.user} {...props} />
+                      return <ListDons user={this.state.user} {...props} />;
                     } else {
                       return <ListDons user={this.state.user} {...props} />;
                     }
