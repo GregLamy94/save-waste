@@ -8,15 +8,15 @@ class KpiBottom extends React.Component {
           <h2>Vos données</h2>
           <p>
             <img src="icon_bullet1.svg" alt="Logo" />
-            {this.props.donsDone.length}Dons réalisés
+            {this.props.donsDone.length} Dons réalisés
           </p>
           <p>
             <img src="icon_bullet2.svg" alt="Logo" />
-            {this.props.nbmealsGiven}Personnes bénéficiées
+            {this.props.nbmealsGiven} Personnes bénéficiées
           </p>
           <p>
             <img src="icon_bullet3.svg" alt="Logo" />
-            {this.props.emissionsCO2}C02 Emissions CO2 évitées
+            {this.props.emissionsCO2} C02 Emissions CO2 évitées
           </p>
         </div>
       </div>

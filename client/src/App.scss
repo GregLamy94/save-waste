@@ -12,7 +12,8 @@ body {
     rgba(250, 248, 248, 1) 45%,
     rgba(250, 248, 248, 1) 100%
   );
-  height: 100vh;
+  padding-bottom: 12vh;
+  //height: 100vh;
 }
 
 input,
@@ -132,11 +133,11 @@ h1 {
 */
 
 .navbar {
-  height: 12vh;
+  height: 9vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.3em 1em;
+  padding: 0.8em 1em 0.3em 1em;
 
   h1 {
     font-size: 22px;
@@ -163,7 +164,9 @@ h1 {
     width: 3.8em;
   }
 }
-
+header.MuiAppBar-colorPrimary {
+  background-color: white;
+}
 /*
   ____             __ _ _      
  |  _ \ _ __ ___  / _(_) | ___ 
@@ -385,6 +388,21 @@ a.btn {
 //   |_____/_/    \_\_____/|_|  |_|____/ \____/_/    \_\_|  \_\_____/
 //
 //
+.dashboard {
+  .Kpi2 {
+    padding: 0.6em;
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+      font-size: 1em;
+    }
+    img {
+      height: 30px;
+      margin-right: 1em;
+    }
+  }
+}
 
 /*
 //    _  _______ _____ 
@@ -460,6 +478,7 @@ a.btn {
 //    \_____/_/    \_\_|  \_\_____/|_____/      |_____/ \____/|_| \_|_____/
 //
 //
+
 .card_dons {
   border-radius: 8px;
   margin-top: 100px;
@@ -473,50 +492,59 @@ a.btn {
   img {
     padding-right: 20px;
   }
-}
 
-.cardClosed {
-  width: 400px;
-  display: flex;
-  justify-content: space-around;
-  margin: auto;
-
-  img {
-    padding-right: 10px;
-    margin-left: 5px;
-    height: 30px;
-  }
-}
-
-.cardOpen {
-  width: 100%;
-  .unitDonCard {
+  .cardClosed {
     width: 100%;
-    background-color: grey;
-  }
-
-  .btn-open {
-    width: 350px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    .toggleButton {
-      margin-left: 10px;
-    }
-  }
-  .cardInfo {
-    margin-top: 20px;
-    text-justify: center;
-    .productType {
-      display: flex;
-      align-items: center;
-      margin-left: auto;
+    margin: auto;
+
+    img {
+      padding-right: 10px;
+      margin-left: 5px;
+      height: 30px;
     }
   }
 
-  img {
-    padding-right: 10px;
-    margin-left: 5px;
-    height: 30px;
+  .cardOpen {
+    width: 100%;
+    .unitDonCard {
+      width: 100%;
+      background-color: grey;
+    }
+
+    .btn-open {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      .toggleButton {
+        margin-left: 10px;
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+    .cardInfo {
+      margin-top: 20px;
+      text-justify: center;
+      .productType {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+      }
+    }
+
+    img {
+      padding-right: 10px;
+      margin-left: 5px;
+      height: 30px;
+    }
+  }
+  .btn {
+    font-size: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0.6em 2em;
   }
 }
