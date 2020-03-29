@@ -27,10 +27,6 @@ class App extends Component {
     listDonsRestaurant: []
   };
 
-  getCurrentPageName = currentPageName => {
-    this.setState({ currentPageName });
-  };
-
   fetchUser = () => {
     if (!this.state.user._id) {
       authService
@@ -46,12 +42,13 @@ class App extends Component {
     this.setState({ user: data });
   };
 
+  updateCurrentPageName = (currentPageName) => {this.setState({ currentPageName })}
+  
   componentDidMount() {
     this.fetchUser();
   }
 
   render() {
-    console.log(this.state.user);
     return (
       <div className="App">
         <Navbar
@@ -100,6 +97,7 @@ class App extends Component {
                       user={this.state.user}
                       updateUser={this.updateUser}
                       history={props.history}
+                      updateCurrentPageName={this.updateCurrentPageName}
                     />
                   )}
                 />
@@ -110,6 +108,7 @@ class App extends Component {
                     <ProfileEdit
                       user={this.state.user}
                       updateUser={this.updateUser}
+                      updateCurrentPageName={this.updateCurrentPageName}
                       {...props}
                     />
                   )}
@@ -122,11 +121,11 @@ class App extends Component {
                       return (
                         (this.state.user.address === "" ||
                           this.state.user.address) && (
-                          <DonationForm user={this.state.user} {...props} />
+                          <DonationForm user={this.state.user} updateCurrentPageName={this.updateCurrentPageName} {...props} />
                         )
                       );
                     } else {
-                      return <ListDons user={this.state.user} {...props} />;
+                      return <ListDons user={this.state.user} updateCurrentPageName={this.updateCurrentPageName} {...props} />;
                     }
                   }}
                 />
@@ -136,9 +135,9 @@ class App extends Component {
                   path="/available-donation"
                   render={props => {
                     if (this.state.user.clientType === "association") {
-                      return <ListDons user={this.state.user} {...props} />;
+                      return <ListDons user={this.state.user} updateCurrentPageName={this.updateCurrentPageName} {...props} />;
                     } else {
-                      return <ListDons user={this.state.user} {...props} />;
+                      return <ListDons user={this.state.user} updateCurrentPageName={this.updateCurrentPageName} {...props} />;
                     }
                   }}
                 />
@@ -150,6 +149,7 @@ class App extends Component {
                     <Address
                       user={this.state.user}
                       updateUser={this.updateUser}
+                      updateCurrentPageName={this.updateCurrentPageName}
                       {...props}
                     />
                   )}
@@ -158,18 +158,19 @@ class App extends Component {
                 <Route
                   exact
                   path="/dashboard"
-                  render={props =>
-                    this.state.user._id && (
-                      <Dashboard user={this.state.user} {...props} />
-                    )
-                  }
+                  render={props => {
+                    if (this.state.user._id) {
+                      return <Dashboard user={this.state.user} updateCurrentPageName={this.updateCurrentPageName} {...props} />
+                    }
+                  }}
                 />
+                
                 <Route
                   exact
                   path="/historic"
                   render={props =>
                     this.state.user._id && (
-                      <Historic user={this.state.user} {...props} />
+                      <Historic user={this.state.user} updateCurrentPageName={this.updateCurrentPageName} {...props} />
                     )
                   }
                 />
@@ -185,5 +186,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

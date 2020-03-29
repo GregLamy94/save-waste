@@ -10,7 +10,12 @@ export default class extends React.Component {
     });
   };
 
+  componentDidMount = () => {
+    this.props.updateCurrentPageName('Profile');
+  };
+
   render() {
+
     return (
       <>
         {!this.props.user._id ? (
