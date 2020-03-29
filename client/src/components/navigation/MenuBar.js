@@ -27,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     margin: "0 auto",
-    backgroundColor: "#F7DC00"
+    backgroundColor: "#F7DC00",
+    color: "#FFFFFF"
   },
   noPadding: {
     paddingLeft: 0,
@@ -56,11 +57,7 @@ function MenuBar(props) {
         >
           <Toolbar className="buttons">
             <Link to={url}>
-              <Fab
-                color="secondary"
-                aria-label="add"
-                className={classes.fabButton}
-              >
+              <Fab aria-label="add" className={classes.fabButton}>
                 <AddIcon />
               </Fab>
             </Link>

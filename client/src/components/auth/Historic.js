@@ -1,5 +1,5 @@
 import React from "react";
-import CarddonPicked from "./dons/Card_picked.js"; 
+import CarddonPicked from "../dons/Card_picked.js"; 
 class Historicview extends React.Component {
     render(){
       return(

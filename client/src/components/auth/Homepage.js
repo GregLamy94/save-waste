@@ -9,7 +9,6 @@ export default props => {
         <Redirect to="/profile" />
       ) : (
         <div className="container">
-          <h1>Save Waste</h1>
           <p>
             Faites de vos surplus des dons et économisez de l’argent avec
             SaveWaste
