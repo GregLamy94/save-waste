@@ -42,15 +42,15 @@ class CarddonAvailable extends React.Component {
         )}
         {this.state.isOpen && (
           <div className="cardOpen">
-            <div>
-              <p>
-                <img src="Gift-Box.png" alt="Logo panier" />
-                Panier disponible
-              </p>
-              <button onClick={this.toggleCard}>
-                <img src="icon_fleche_open.svg" alt="Logo chevron open " />
-                {this.state.isOpen}
-              </button>
+            <div className="btn-open">
+              <img src="Gift-Box.png" alt="Logo panier" />
+              Panier disponible
+              <div className="toggleButton">
+                <button onClick={this.toggleCard}>
+                  <img src="icon_fleche_open.svg" alt="Logo chevron open " />
+                  {this.state.isOpen}
+                </button>
+              </div>
             </div>
 
             {this.props.donationBox.map(
@@ -64,9 +64,11 @@ class CarddonAvailable extends React.Component {
                 )
             )}
             {this.props.user.clientType === "association" ? (
-              <button onClick={this.bookDon}>Réserver</button>
+              <button className="btn" onClick={this.bookDon}>
+                Réserver
+              </button>
             ) : (
-              <button>Modifier</button>
+              <button className="btn">Modifier</button>
             )}
 
             {/*Renvoi au formulaire de don */}

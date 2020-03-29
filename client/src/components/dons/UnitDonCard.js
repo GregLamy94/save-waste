@@ -10,24 +10,22 @@ class UnitDonCard extends React.Component {
     };
 
     return (
-      <div className="unitDonCard">
+      <div className="cardInfo">
         <div>
-          Type:
-          {this.props.productType}
-          <img src={foodTypes[this.props.productType]} alt="food type" />
-          <img src={this.props.img_product} alt="Logo productType" />
-        </div>
-        <div>{this.props.productName}</div>
-
-        <div>
-          <p>Poids</p>
-          <p>
-            {this.props.quantity.value} {" " + this.props.quantity.qtyType}
-          </p>
-        </div>
-        <div>
-          <p>Date de peremption</p>
-          <p>{this.props.expirationDate.split("T")[0]}</p>
+          <div>Produit: {this.props.productName}</div>
+          <div className="productType">
+            Type: {this.props.productType}
+            <div>
+              <img src={foodTypes[this.props.productType]} alt="food type" />
+            </div>
+          </div>
+          <div>
+            Poids: {this.props.quantity.value}{" "}
+            {" " + this.props.quantity.qtyType}
+          </div>
+          <div>
+            Date de peremption: {this.props.expirationDate.split("T")[0]}
+          </div>
         </div>
       </div>
     );
