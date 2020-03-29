@@ -19,24 +19,32 @@ export default {
   },
 
   getDonationsAvailable() {
-    return this.service
-      .get("/donations/available")
-// WARNING PAS SUR DE CE QUE JE FAIS
-      .then(response => response.data);
+    return (
+      this.service
+        .get("/donations/available")
+        // WARNING PAS SUR DE CE QUE JE FAIS
+        .then(response => response.data)
+    );
   },
 
   getDonationsGiver() {
-    console.log("function DonationServices caleled)");
     return this.service.get("/donations/giver").then(response => {
-      console.log("donations", response.data);
+      // console.log("donations", response.data);
       return response.data;
     });
   },
 
   getDonationsAssociation() {
-    console.log("function DonationServices called)");
     return this.service.get("/donations/taker").then(response => {
-      console.log("donations", response.data);
+      // console.log("donations", response.data);
+      return response.data;
+    });
+  },
+
+  bookDonation(donationID) {
+    console.log("function bookDonation called");
+    return this.service.put(`/donations/book/${donationID}`).then(response => {
+      console.log("booked", response.data);
       return response.data;
     });
   }

@@ -28,7 +28,12 @@ class ListDons extends React.Component {
     return (
       <div className="listDonsAvailable">
         {this.state.donationsAvailable.map(don => (
-          <CarddonAvailable key={don._id} {...don} />
+          <CarddonAvailable
+            key={don._id}
+            user={this.props.user}
+            history={this.props.history}
+            {...don}
+          />
         ))}
         <MenuBar />
       </div>

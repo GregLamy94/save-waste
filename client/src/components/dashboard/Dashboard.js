@@ -74,11 +74,11 @@ class Dashboard extends React.Component {
         <KpiTop amount={amount} donsOnGoing={donsOnGoing} />
 
         {donsDone.map(don => (
-          <CarddonBooked key={don._id} {...don} />
+          <CarddonBooked key={don._id} user={this.props.user} {...don} />
         ))}
 
         {donsOnGoing.map(don => (
-          <CarddonAvailable key={don._id} {...don} />
+          <CarddonAvailable key={don._id} user={this.props.user} {...don} />
         ))}
 
         <KpiBottom

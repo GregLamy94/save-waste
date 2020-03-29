@@ -91,7 +91,6 @@ router.get("/taker", (req, res, next) => {
 
 //Récupère tous les dons pending pour les associations
 router.get("/available", (req, res, next) => {
-  console.log(req.user);
   if (!req.user || !req.user.clientType === "association") {
     res.status(401).json({
       message:
@@ -109,6 +108,29 @@ router.get("/available", (req, res, next) => {
         .status(500)
         .json({ message: "Something went wrong during donations request" });
     });
+});
+
+//Réservation d'un Don par une association
+router.put("/book/:id", (req, res, next) => {
+  if (!req.user || !req.user.clientType === "association") {
+    res.status(401).json({
+      message:
+        "Vous devez être une association authentifiée pour réserver un don"
+    });
+    return;
+  }
+  const id = req.params.id;
+  Donation.findByIdAndUpdate(
+    id,
+    { status: "booked", taker: req.user._id },
+    function(err, donation) {
+      if (err)
+        return res
+          .status(500)
+          .json({ message: "Something went wrong during donations request" });
+      res.status(201).json(donation);
+    }
+  );
 });
 
 module.exports = router;

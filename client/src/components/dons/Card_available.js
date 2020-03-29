@@ -1,4 +1,6 @@
 import React from "react";
+import UnitDonCard from "./UnitDonCard";
+import donationServices from "./donationServices";
 
 class CarddonAvailable extends React.Component {
   state = {
@@ -14,13 +16,15 @@ class CarddonAvailable extends React.Component {
   //   }
   //   return img_product;
   // };
+
+  bookDon = () => {
+    //USE HERE Donation Services to book this.props._id
+
+    donationServices.bookDonation(this.props._id).then(donation => {
+      this.props.history.push("/dashboard");
+    });
+  };
   render() {
-    const foodTypes = {
-      fruits: 'carrot.svg',
-      Légumes: 'carrot.svg',
-      viandes: 'carrot.svg',
-      divers: 'carrot.svg',
-    };
     return (
       <div className="card_dons">
         {!this.state.isOpen && (
@@ -48,31 +52,23 @@ class CarddonAvailable extends React.Component {
                 {this.state.isOpen}
               </button>
             </div>
-            <div>
-              {this.props.donationBox.map(unitDon => (
-                <div>
-                  <div>
-                    Type:
-                    {unitDon.productType}
-                    <img src={foodTypes[unitDon.productType]} alt='food type'/>
-                    <img src={this.props.img_product} alt="Logo productType" />
-                  </div>
-                  <div>{unitDon.productName}</div>
 
-                  <div>
-                    <p>Poids</p>
-                    <p>
-                      {unitDon.quantity.value} {" " + unitDon.quantity.qtyType}
-                    </p>
-                  </div>
-                  <div>
-                    <p>Date de peremption</p>
-                    <p>{unitDon.expirationDate}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button>Modifier</button>
+            {this.props.donationBox.map(
+              unitDon =>
+                this.props.user && (
+                  <UnitDonCard
+                    key={unitDon._id}
+                    user={this.props.user}
+                    {...unitDon}
+                  />
+                )
+            )}
+            {this.props.user.clientType === "association" ? (
+              <button onClick={this.bookDon}>Réserver</button>
+            ) : (
+              <button>Modifier</button>
+            )}
+
             {/*Renvoi au formulaire de don */}
           </div>
         )}
